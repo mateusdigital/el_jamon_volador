@@ -36,10 +36,7 @@
 // Constants                                                                  //
 //----------------------------------------------------------------------------//
 // World Physics
-#define GRAVITY           +1
-#define IMPULSE          -10
-#define MAX_ACCELERATION  +1
-#define MAX_SPEED         +3
+
 // Pipe
 #define PIPE_SAFE_AREA  4
 
@@ -51,7 +48,7 @@
 static I16   _player_speed_y        = 0;
 static I16   _player_acceleration_y = 0;
 static BOOL _button_down           = FALSE;
-static U16   _impulse               = 0;
+static I16   _impulse               = 0;
 static U16   _input                 = 0;
 
 
@@ -100,7 +97,11 @@ game_screen_run()
     //     player_y += 1;
     // }
 
-    _impulse = 0;
+    // _impulse = 0;
+
+    #define GRAVITY            +1
+    #define IMPULSE           -10
+    #define MAX_SPEED          +3
 
     //
     // Player - Input
@@ -114,21 +115,13 @@ game_screen_run()
 
     //
     // Player - Physics
-    _player_acceleration_y += (GRAVITY + _impulse);
-    _player_acceleration_y = M_clamp(
-        _player_acceleration_y,
-        IMPULSE,
-        MAX_ACCELERATION
-    );
-
-    _player_speed_y += _player_acceleration_y;
-    if(_player_speed_y <= -MAX_SPEED) {
-        _player_speed_y = -MAX_SPEED;
-    }
-    if(_player_speed_y >= MAX_SPEED) {
-        _player_speed_y = MAX_SPEED;
+    _player_acceleration_y = (GRAVITY + _impulse);
+    _impulse += 1;
+    if(_impulse > 0) {
+        _impulse = 0;
     }
 
+    _player_speed_y = M_clamp(_player_speed_y + _player_acceleration_y, -MAX_SPEED, MAX_SPEED);
     player_y += _player_speed_y;
 
     //
@@ -163,8 +156,7 @@ game_screen_run()
             return FALSE;
         }
         // Bottom pipe
-        // else
-        if(player_y + SPRITE_SIZEx2 > (pipe_y + pipe_openess + PIPE_SAFE_AREA)){
+        else if(player_y + SPRITE_SIZEx2 > (pipe_y + pipe_openess + PIPE_SAFE_AREA)){
             return FALSE;
         }
     }
