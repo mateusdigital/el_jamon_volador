@@ -1,0 +1,6 @@
+.vscode
+*.gb
+*.sav
+.map
+*.s19
+.sym
