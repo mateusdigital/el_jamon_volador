@@ -155,7 +155,7 @@ game_screen_run()
 
     //
     // Player - Collision Pipe
-    if(player_x + SPRITE_SIZEx2 >= pipe_x &&
+    if(player_x >= pipe_x &&
        player_x                 <= pipe_x + SPRITE_SIZEx2) {
         // We are inside of the pipe, let's check if we are colliding with it!
         // Top pipe
@@ -163,8 +163,8 @@ game_screen_run()
             return FALSE;
         }
         // Bottom pipe
-        else if(player_y + SPRITE_SIZEx2 > (pipe_y + pipe_openess + PIPE_SAFE_AREA)){
-            printf("adsa");
+        // else
+        if(player_y + SPRITE_SIZEx2 > (pipe_y + pipe_openess + PIPE_SAFE_AREA)){
             return FALSE;
         }
     }
