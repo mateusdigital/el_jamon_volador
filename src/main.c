@@ -51,7 +51,7 @@ void
 main()
 {
     init_game();
-    change_screen_to(SCREEN_TYPE_SPLASH);
+    change_screen_to(SCREEN_TYPE_SPLASH_INTRO);
 
     while(TRUE) {
         BOOL s = (*screen_run_func)();
