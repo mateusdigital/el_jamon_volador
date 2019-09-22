@@ -144,12 +144,14 @@ game_screen_run()
     if(player_y + SPRITE_SIZE > SCREEN_Y2) {
         player_y = SCREEN_Y2 - SPRITE_SIZE;
         return FALSE;
+    } else if(player_y < SPRITE_SIZEx2) {
+        player_y = SPRITE_SIZEx2;
     }
 
     //
     // Player - Collision Pipe
     if(player_x >= pipe_x &&
-       player_x                 <= pipe_x + SPRITE_SIZEx2) {
+       player_x <= pipe_x + SPRITE_SIZEx2) {
         // We are inside of the pipe, let's check if we are colliding with it!
         // Top pipe
         if(player_y < (pipe_y - pipe_openess - PIPE_SAFE_AREA + SPRITE_SIZE)) {
