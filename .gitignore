@@ -4,3 +4,4 @@
 .map
 *.s19
 .sym
+.DS_Store
