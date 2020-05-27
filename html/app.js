@@ -6,7 +6,8 @@
 //                                                                            //
 // And modify a little to remove the dependencies of jquery                   //
 //----------------------------------------------------------------------------//
-const ROM_FILENAME="./rom/game.gb"
+const ROM_FILENAME       = "./rom/game.gb"
+const ACTION_BUTTON_CODE = 88;
 
 var gameboy = window.gameboy = new (window.Gameboy)();
 
@@ -32,18 +33,33 @@ fetch(new Request(ROM_FILENAME))
         gameboy.start();
     });
 
-function loadFile () {
-    if (!this.files.length) return;
-
-    var reader = new FileReader();
-    reader.onloadend = function () {
-        gameboy.loadCart(reader.result);
-        gameboy.start();
-    };
-    reader.readAsArrayBuffer(this.files[0]);
-}
 
 //
 // Joypad
-document.onkeydown  = function(e) { gameboy.joypad.keyDown(e.keyCode) }
-document.onkeyup    = function(e) { gameboy.joypad.keyUp  (e.keyCode) }
+document.onkeydown = function(e) {
+    gameboy.joypad.keyDown(ACTION_BUTTON_CODE);
+}
+document.onkeyup = function(e) {
+    gameboy.joypad.keyUp(ACTION_BUTTON_CODE);
+}
+
+canvas.addEventListener("mousedown", (e)=>{
+    e.preventDefault()
+    gameboy.joypad.keyDown(ACTION_BUTTON_CODE);
+}, false);
+
+canvas.addEventListener("mouseup", (e)=>{
+    e.preventDefault()
+    gameboy.joypad.keyUp(ACTION_BUTTON_CODE);
+}, false);
+
+
+canvas.addEventListener("touchstart", (e)=>{
+    e.preventDefault()
+    gameboy.joypad.keyDown(ACTION_BUTTON_CODE);
+}, false);
+
+canvas.addEventListener("touchend", (e)=>{
+    e.preventDefault()
+    gameboy.joypad.keyUp(ACTION_BUTTON_CODE);
+}, false);
