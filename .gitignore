@@ -1,7 +1,8 @@
 build/
 dist/
 
-.vscode
+.vscode/
+.idea/
 *.gb
 *.sav
 .map
