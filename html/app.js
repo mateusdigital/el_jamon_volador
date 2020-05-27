@@ -6,7 +6,7 @@
 //                                                                            //
 // And modify a little to remove the dependencies of jquery                   //
 //----------------------------------------------------------------------------//
-const ROM_FILENAME="/rom/game.gb"
+const ROM_FILENAME="./rom/game.gb"
 
 var gameboy = window.gameboy = new (window.Gameboy)();
 
