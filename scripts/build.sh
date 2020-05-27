@@ -17,8 +17,20 @@
 ##                                                                            ##
 ##---------------------------------------------------------------------------~##
 
+##----------------------------------------------------------------------------##
+## Imports                                                                    ##
+##----------------------------------------------------------------------------##
+source /usr/local/src/stdmatt/shellscript_utils/main.sh
+
+
+##----------------------------------------------------------------------------##
+## Variables                                                                  ##
+##----------------------------------------------------------------------------##
+SCRIPT_DIR="$(pw_get_script_dir)";
+ROOT_DIR=$(pw_abspath "${SCRIPT_DIR}/..");
 BUILD_DIR="${ROOT_DIR}/build";
 DIST_DIR="${ROOT_DIR}/dist";
+HTML_DIR="${ROOT_DIR}/html";
 
 SOURCE_DIR="${ROOT_DIR}/game/src";
 INCLUDE_DIR="${ROOT_DIR}/game/include";
@@ -53,14 +65,21 @@ FINAL_VERSION="$(bump-the-version \
     "#define GAME_VERSION"        \
     show                          \
 )";
+FULL_PACKAGE_NAME="${PROJECT_PACKAGE_NAME}_${FINAL_VERSION}.gb";
 
 echo "Building $PROJECT_NAME - $FINAL_VERSION";
 ## Compile the game.
-$LCC -o                                                       \
-    ${BUILD_DIR}/${PROJECT_PACKAGE_NAME}_${FINAL_VERSION}.gb  \
-    ${SOURCE_DIR}/*.c                                         \
+$LCC -o                               \
+    ${BUILD_DIR}/${FULL_PACKAGE_NAME} \
+    ${SOURCE_DIR}/*.c                 \
     ${INCLUDE_DIR}/res/flappy.c
 
+##
+## HTML
+if [ -n  "$(pw_getopt_exists "--html" "$@")" ]; then
+    echo "Building HTML...";
+    cp -v ${BUILD_DIR}/${FULL_PACKAGE_NAME} ${HTML_DIR}/rom/game.gb
+fi;
 
 ##
 ## Dist
