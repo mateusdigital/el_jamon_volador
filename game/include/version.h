@@ -18,6 +18,6 @@
 #ifndef __VERSION_H__
 #define __VERSION_H__
 
-#define GAME_VERSION "0.0.3"
+#define GAME_VERSION "1.0.0"
 
 #endif // __VERSION_H__
