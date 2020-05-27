@@ -1,0 +1,2 @@
+v1.0.0 - May 27, 2020
+    - Initial release of the game ;D
