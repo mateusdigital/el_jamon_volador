@@ -36,6 +36,7 @@ SOURCE_DIR="${ROOT_DIR}/game/src";
 INCLUDE_DIR="${ROOT_DIR}/game/include";
 LCC="";
 
+PROJECT_PACKAGE_NAME="el_ramon_volador";
 
 ##----------------------------------------------------------------------------##
 ## Script                                                                     ##
@@ -67,7 +68,7 @@ FINAL_VERSION="$(bump-the-version \
 )";
 FULL_PACKAGE_NAME="${PROJECT_PACKAGE_NAME}_${FINAL_VERSION}.gb";
 
-echo "Building $PROJECT_NAME - $FINAL_VERSION";
+echo "Building $FULL_PACKAGE_NAME";
 ## Compile the game.
 $LCC -o                               \
     ${BUILD_DIR}/${FULL_PACKAGE_NAME} \
