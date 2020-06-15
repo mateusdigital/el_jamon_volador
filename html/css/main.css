@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'JetBrainsMono-Regular';
+    src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 canvas {
     image-rendering: optimizeSpeed;
     image-rendering: -moz-crisp-edges;
@@ -10,6 +17,7 @@ canvas {
 body {
     background: #cfeffc;
     margin: 0 0 0 0;
+    font-family: "JetBrainsMono-Regular", Monospace, Courier;
 }
 
 #container_div {
@@ -44,3 +52,9 @@ body {
     box-shadow: 5px 7px 6px 2px #7c7c7c;
 }
 
+#footer {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+}
