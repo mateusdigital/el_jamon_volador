@@ -52,9 +52,15 @@ body {
     box-shadow: 5px 7px 6px 2px #7c7c7c;
 }
 
+#download {
+    padding-top: 2em;
+    text-align: center;
+    width: 100%;
+}
+
 #footer {
     position: absolute;
-    bottom: 0;
+    bottom: 1em;
     text-align: center;
     width: 100%;
 }

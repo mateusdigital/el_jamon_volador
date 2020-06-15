@@ -26,8 +26,12 @@ source /usr/local/src/stdmatt/shellscript_utils/main.sh
 ## Variables                                                                  ##
 ##----------------------------------------------------------------------------##
 SCRIPT_DIR="$(pw_get_script_dir)";
+
 SRC_DIR="$(pw_abspath "${SCRIPT_DIR}/../game/include")";
+HTML_DIR="$(pw_abspath "${SCRIPT_DIR}/../html")";
+
 SRC_FILE="${SRC_DIR}/version.h";
+HTML_FILE="${HTML_DIR}/index.html";
 
 
 ##----------------------------------------------------------------------------##
@@ -38,4 +42,5 @@ if [ -z "$BUMP_THE_VERSION" ]; then
     pw_log_fatal "Couldn't find (bump-the-version) program - Aborting...";
 fi;
 
-"${BUMP_THE_VERSION}" "${SRC_FILE}" "#define GAME_VERSION" bump "$1";
+"${BUMP_THE_VERSION}" "${SRC_FILE}"  "#define GAME_VERSION" bump "$1";
+"${BUMP_THE_VERSION}" "${HTML_FILE}" "    v" bump "$1";
