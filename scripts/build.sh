@@ -41,19 +41,26 @@ PROJECT_PACKAGE_NAME="el_ramon_volador";
 ##----------------------------------------------------------------------------##
 ## Script                                                                     ##
 ##----------------------------------------------------------------------------##
-## @todo(stdmatt): Make the project compilers on GNU/Linux as well..
-if [ "$(pw_os_get_simple_name)" == "$(PW_OS_OSX)" ]; then
-    #notice(stdamtt):  GBDKDIR NEEDS TO END WITH A SLASH /
-    export GBDKDIR="${ROOT_DIR}/game/third_party/osx/gbdk/";
-    test -d "$GBDKDIR" ||            \
-        pw_log_fatal                 \
-            "GBDKDIR doesn't exists" \
-            "GBDKDIR: ($GBDKDIR)";
+##
+## Configure the compiler.
+OS_NAME="$(pw_os_get_simple_name)";
 
-    LCC="${GBDKDIR}/bin/lcc";
+#notice(stdamtt):  GBDKDIR NEEDS TO END WITH A SLASH /
+if [ "$OS_NAME" == "$(PW_OS_OSX)" ]; then
+    export GBDKDIR="${ROOT_DIR}/game/third_party/osx/gbdk/";
+elif [ "$OS_NAME" == "$(PW_OS_GNU_LINUX)" ] || [ "$OS_NAME" == "$(PW_OS_WSL)" ]; then
+    export GBDKDIR="/opt/gbdk/";
 else
-    pw_log_fatal "Can't build in non OSX hosts yet...";
+    pw_log_fatal "Can't build on this host yet...";
 fi;
+
+test -d "$GBDKDIR" ||            \
+    pw_log_fatal                 \
+        "GBDKDIR doesn't exists" \
+        "GBDKDIR: ($GBDKDIR)";
+
+LCC="${GBDKDIR}/bin/lcc";
+
 
 ##
 ## Build
