@@ -1,0 +1,3 @@
+[submodule "game/third_party/gnu_linux/gbdk"]
+	path = game/third_party/gnu_linux/gbdk
+	url = https://github.com/stdmatt/gbdk
