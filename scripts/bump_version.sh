@@ -42,5 +42,9 @@ if [ -z "$BUMP_THE_VERSION" ]; then
     pw_log_fatal "Couldn't find (bump-the-version) program - Aborting...";
 fi;
 
-"${BUMP_THE_VERSION}" "${SRC_FILE}"  "#define GAME_VERSION" bump "$1";
-"${BUMP_THE_VERSION}" "${HTML_FILE}" "    v" bump "$1";
+
+LINK_STR="<a href=\"https://stdmatt.com/deploy/games/el_jamon_volador/archive/el_ramon_volador_v";
+
+# "${BUMP_THE_VERSION}" "${SRC_FILE}"  "#define GAME_VERSION" bump "$1";
+# "${BUMP_THE_VERSION}" "${HTML_FILE}" "    v" bump "$1";
+"${BUMP_THE_VERSION}" "${HTML_FILE}" "$LINK_STR" bump "$1";
