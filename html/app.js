@@ -20,7 +20,6 @@ canvas.style.width  = "100%";
 canvas.style.height = "100%";
 
 gameboy.gpu.on('frame', function (offcanvas) {
-    console.log(offcanvas.width, offcanvas.height);
     ctx.drawImage(offcanvas, 0, 0);
 });
 
@@ -44,22 +43,18 @@ document.onkeyup = function(e) {
 }
 
 canvas.addEventListener("mousedown", (e)=>{
-    e.preventDefault()
     gameboy.joypad.keyDown(ACTION_BUTTON_CODE);
 }, false);
 
 canvas.addEventListener("mouseup", (e)=>{
-    e.preventDefault()
     gameboy.joypad.keyUp(ACTION_BUTTON_CODE);
 }, false);
 
 
 canvas.addEventListener("touchstart", (e)=>{
-    e.preventDefault()
     gameboy.joypad.keyDown(ACTION_BUTTON_CODE);
 }, false);
 
 canvas.addEventListener("touchend", (e)=>{
-    e.preventDefault()
     gameboy.joypad.keyUp(ACTION_BUTTON_CODE);
 }, false);
