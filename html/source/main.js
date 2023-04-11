@@ -1,15 +1,26 @@
-//----------------------------------------------------------------------------//
-// Kudos for https://github.com/nakardo                                       //
-//                                                                            //
-// I got everything from here:                                                //
-//    https://www.npmjs.com/package/node-gameboy                              //
-//                                                                            //
-// And modify a little to remove the dependencies of jquery                   //
-//----------------------------------------------------------------------------//
 const ROM_FILENAME       = "./rom/game.gb"
-const ACTION_BUTTON_CODE = 88;
 
-var gameboy = window.gameboy = new (window.Gameboy)();
+
+// Then, create a Gameboy object !
+const gb = new Gameboy();
+gb.AttachCanvas(canvas); // ; Attach to canvas of choice
+
+// Here are some default settings I use ...
+gb.SetFPS (60);
+gb.bootromEnabled = false;
+gb.SetVolume (0.05);
+gb.EnableSound ();
+gb.keyboardEnabled = true;
+
+
+
+// Finally, you load roms and start the GB !
+any_file_input_or_sumn.onchange = function () {
+    // Load a binary buffer from file input ...
+    // And then ... fun taim :D
+    gb.InsertRom (binBuffer);
+    gb.Start ();
+};
 
 //
 // Render
@@ -20,6 +31,7 @@ canvas.style.width  = "100%";
 canvas.style.height = "100%";
 
 gameboy.gpu.on('frame', function (offcanvas) {
+    debugger
     console.log(offcanvas.width, offcanvas.height);
     ctx.drawImage(offcanvas, 0, 0);
 });
