@@ -11,22 +11,20 @@
 ##  Date      : Sep 22, 2019                                                  ##
 ##  License   : GPLv3                                                         ##
 ##  Author    : stdmatt <stdmatt@pixelwizards.io>                             ##
-##  Copyright : stdmatt - 2019, 2020                                          ##
+##  Copyright : stdmatt - 2019, 2020, 2023                                    ##
 ##                                                                            ##
 ##  Description :                                                             ##
 ##                                                                            ##
 ##---------------------------------------------------------------------------~##
 
 ##----------------------------------------------------------------------------##
-## Imports                                                                    ##
-##----------------------------------------------------------------------------##
-
-##----------------------------------------------------------------------------##
 ## Variables                                                                  ##
 ##----------------------------------------------------------------------------##
+##------------------------------------------------------------------------------
 readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)";
 readonly ROOT_DIR="$(dirname "$SCRIPT_DIR")";
 
+##------------------------------------------------------------------------------
 readonly BUILD_DIR="${ROOT_DIR}/build";
 readonly DIST_DIR="${ROOT_DIR}/dist";
 readonly HTML_DIR="${ROOT_DIR}/html";
@@ -34,9 +32,14 @@ readonly HTML_DIR="${ROOT_DIR}/html";
 readonly SOURCE_DIR="${ROOT_DIR}/game/src";
 readonly INCLUDE_DIR="${ROOT_DIR}/game/include";
 
+##------------------------------------------------------------------------------
+readonly PROJECT_PACKAGE_NAME="el-jamon-volador";
+readonly PROJECT_VERSION="1.2.0";
+readonly FULL_PACKAGE_NAME="${PROJECT_PACKAGE_NAME}_${PROJECT_VERSION}.gb";
+
 
 ##----------------------------------------------------------------------------##
-## Script                                                                     ##
+## Setup Compiler                                                             ##
 ##----------------------------------------------------------------------------##
 ## @todo(stdmatt): Make the project compilers on GNU/Linux as well..
 if [ -n "$(uname -s | grep "Darwin")" ]; then
@@ -53,15 +56,16 @@ else
     exit 1;
 fi;
 
-##
-## Build
+
+##----------------------------------------------------------------------------##
+## Build                                                                      ##
+##----------------------------------------------------------------------------##
 echo "Cleaning build directory";
 rm    -rf "$BUILD_DIR";
 mkdir -p  "$BUILD_DIR";
 
-FULL_PACKAGE_NAME="${PROJECT_PACKAGE_NAME}_${PROJECT_VERSION}.gb";
-
 echo "Building $PROJECT_NAME - $FINAL_VERSION";
+
 ## Compile the game.
 $LCC -o                               \
     ${BUILD_DIR}/${FULL_PACKAGE_NAME} \
