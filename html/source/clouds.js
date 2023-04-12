@@ -4,12 +4,15 @@ function make_cloud(div, color) {
     const canvas = document.createElement("canvas");
 
     // debugger
-    const center_radius   = 100;
-    const total_clouds    = 6;
-    const total_subclouds = 8;
+    const div_width = div.clientWidth;
+    const div_height = div.clientHeight;
 
-    canvas.width  = div.clientWidth;
-    canvas.height = div.clientHeight;
+    canvas.width  = div_width;
+    canvas.height = div_height;
+
+    const center_radius = 100;
+    const total_clouds    = Math.trunc(div_width / center_radius) + 1;
+    const total_subclouds = 8;
 
     const ctx = canvas.getContext('2d');
 
@@ -18,8 +21,8 @@ function make_cloud(div, color) {
 
         ctx.save();
         ctx.translate(
-            (cloud_i / total_clouds) * canvas.width + (center_radius * 2) - center_radius / 2,
-            center_radius * 2.5
+            (cloud_i + 1) * center_radius + center_radius * cloud_i,
+            center_radius * 2.3
         );
 
         ctx.beginPath();
@@ -52,8 +55,8 @@ function make_cloud(div, color) {
 
 const div = document.getElementById("bg1");
 const div2 = document.getElementById("bg2");
-const div3 = document.getElementById("bg3", );
+const div3 = document.getElementById("bg3");
 
-make_cloud(div, "red");
+make_cloud(div,  "red");
 make_cloud(div2, "blue");
 make_cloud(div3, "green");
