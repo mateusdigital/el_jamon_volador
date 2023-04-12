@@ -12,15 +12,17 @@
  */
 @import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 
-@font-face {
+
+
+/* @font-face {
     font-family: "Pretendo";
     src: url("/html/resources/fonts/pretendo-font/Pretendo.ttf") format("truetype");
-}
+} */
 
 body {
     background: #0976e4;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
 
 }
 
@@ -29,7 +31,49 @@ img {
     height: 100%;
 }
 
+.container {
+    position: relative;
+    display: grid;
+}
+
+
+.clouds {
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 100%;
+    display: block;
+    /* background-color: red; */
+}
+
+
+.cloud-1 {
+    position: absolute;
+
+    /* background-color: rgba(255, 0, 0, 1); */
+    /* background-blend-mode: multiply; */
+}
+
+.cloud-2 {
+    position: absolute;
+    top: 10rem;
+
+    /* background-color: rgba(0, 0, 255, 1); */
+    /* background-blend-mode: multiply; */
+}
+
+.cloud-3 {
+    position: absolute;
+    top: 17rem;
+
+    /* background-color: rgba(0, 255, 0, 1); */
+    /* background-blend-mode: multiply; */
+}
+
 .gameboy {
+    position: relative;
+    top: 0rem;
+
     margin: 0vw auto;
 
     width:  30rem;
@@ -146,7 +190,6 @@ img {
 }
 
 .screen-power-led {
-
     background-color: #F00;
     box-shadow:
         rgba(0, 0, 0, 0.2) 0 -1px 7px 1px,

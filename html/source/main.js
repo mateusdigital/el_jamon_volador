@@ -1,77 +1,46 @@
-const ROM_FILENAME       = "./rom/game.gb"
-
-
-// Then, create a Gameboy object !
-const gb = new Gameboy();
-gb.AttachCanvas(canvas); // ; Attach to canvas of choice
-
-// Here are some default settings I use ...
-gb.SetFPS (60);
-gb.bootromEnabled = false;
-gb.SetVolume (0.05);
-gb.EnableSound ();
-gb.keyboardEnabled = true;
+<!----- Scripts ----->
+<script src="./modules/external/gameboy/src/cpu.js" defer></script>
+<script src="./modules/external/gameboy/src/ops.js" defer></script>
+<script src="./modules/external/gameboy/src/mem.js" defer></script>
+<script src="./modules/external/gameboy/src/ppu.js" defer></script>
+<script src="./modules/external/gameboy/src/apu.js" defer></script>
+<script src="./modules/external/gameboy/src/joypad.js" defer></script>
+<script src="./modules/external/gameboy/src/main.js" defer></script>
 
 
 
-// Finally, you load roms and start the GB !
-any_file_input_or_sumn.onchange = function () {
-    // Load a binary buffer from file input ...
-    // And then ... fun taim :D
-    gb.InsertRom (binBuffer);
-    gb.Start ();
-};
+window.onload = function () {
+    const canvas = document.getElementById('nanacanvas');
+    const gb = new Gameboy();
+    gb.AttachCanvas(canvas);
 
-//
-// Render
-var canvas = document.getElementById('frame');
-var ctx    = canvas.getContext('2d');
+    // Default settings
+    gb.SetFPS(60); // 120 is performant but 60 is smoother
+    gb.bootromEnabled = false;
+    gb.SetPallete(['fff6d3', 'f9a875', 'eb6b6f', '7c3f58']);
 
-canvas.style.width  = "100%";
-canvas.style.height = "100%";
+    // const defaultVolume = 0.05;
+    // gb.SetVolume (defaultVolume);
+    // gb.EnableSound ();
 
-gameboy.gpu.on('frame', function (offcanvas) {
-    debugger
-    console.log(offcanvas.width, offcanvas.height);
-    ctx.drawImage(offcanvas, 0, 0);
-});
+    gb.DisableAlphaBlend();
+    gb.SetAlphaBlend(0.7);
 
-//
-// Load rom
-fetch(new Request(ROM_FILENAME))
-    .then(response => response.arrayBuffer())
-    .then(function (buffer) {
-        gameboy.loadCart(buffer);
-        gameboy.start();
-    });
+    gb.keyboardEnabled = true;
 
+    fetch("./rom/el-jamon-volador_1.2.0.gb")
+        .then(response => response.blob())
+        .then(blob => {
+            const fileReader = new FileReader();
 
-//
-// Joypad
-document.onkeydown = function(e) {
-    gameboy.joypad.keyDown(ACTION_BUTTON_CODE);
+            fileReader.onload = () => {
+                const fileData = new Uint8Array(fileReader.result);
+                gb.InsertRom(fileData);
+                gb.Start();
+            };
+            fileReader.readAsArrayBuffer(blob);
+        })
+        .catch(error => {
+            console.error(error);
+        });
 }
-document.onkeyup = function(e) {
-    gameboy.joypad.keyUp(ACTION_BUTTON_CODE);
-}
-
-canvas.addEventListener("mousedown", (e)=>{
-    e.preventDefault()
-    gameboy.joypad.keyDown(ACTION_BUTTON_CODE);
-}, false);
-
-canvas.addEventListener("mouseup", (e)=>{
-    e.preventDefault()
-    gameboy.joypad.keyUp(ACTION_BUTTON_CODE);
-}, false);
-
-
-canvas.addEventListener("touchstart", (e)=>{
-    e.preventDefault()
-    gameboy.joypad.keyDown(ACTION_BUTTON_CODE);
-}, false);
-
-canvas.addEventListener("touchend", (e)=>{
-    e.preventDefault()
-    gameboy.joypad.keyUp(ACTION_BUTTON_CODE);
-}, false);

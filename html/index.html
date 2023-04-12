@@ -10,109 +10,65 @@
 </head>
 
 <body>
+    <div class="container">
+        <div class="clouds cloud-1 red" id="bg1">
+        </div>
 
-    <head>
-        <title>Gameboy</title>
-        <meta charset="utf-8" />
-        <meta name="description" content="Gameboy css only" />
-        <link rel="stylesheet" href="main.css" />
-    </head>
+        <div class="clouds cloud-2 blue" id="bg2">
+        </div>
 
-    <div class="gameboy-container">
-        <div class="gameboy">
-            <div class="top-details">
-                <div class="top-details-vertical-container">
-                    <div></div>
-                    <div></div>
-                </div>
-                <div class="top-details-horizontal"></div>
-            </div>
-
-            <div class="screen">
-                <div class="screen-header-container">
-                    <div class="screen-header-stripes-container">
+        <div class="gameboy-container">
+            <div class="gameboy">
+                <div class="top-details">
+                    <div class="top-details-vertical-container">
                         <div></div>
                         <div></div>
                     </div>
-                    <span class="screen-header-text">DOT MATRIX WITH STEREO SOUND</span>
-                    <div class="screen-header-stripes-container">
-                        <div></div>
-                        <div></div>
-                    </div>
+                    <div class="top-details-horizontal"></div>
                 </div>
 
-                <div class="screen-content-container">
-                    <div class="screen-power-container">
-                        <div class="screen-power-led"></div>
-                        <span class="screen-power-text">BATTERY</span>
+                <div class="screen">
+                    <div class="screen-header-container">
+                        <div class="screen-header-stripes-container">
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <span class="screen-header-text">DOT MATRIX WITH STEREO SOUND</span>
+                        <div class="screen-header-stripes-container">
+                            <div></div>
+                            <div></div>
+                        </div>
                     </div>
-                    <div class="screen-canvas-container">
-                        <canvas id='nanacanvas' class="screen-canvas" width='160' height='144'></canvas>
-                        <div class="screen-canvas-shadow">
+
+                    <div class="screen-content-container">
+                        <div class="screen-power-container">
+                            <div class="screen-power-led"></div>
+                            <span class="screen-power-text">BATTERY</span>
+                        </div>
+                        <div class="screen-canvas-container">
+                            <canvas id='nanacanvas' class="screen-canvas" width='160' height='144'></canvas>
+                            <div class="screen-canvas-shadow">
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="logo-container">
+                    <span class="logo-nintendo">Nintendo</span>
+                    <span class="logo-gameboy">Game Boy</span>
+                    <span class="logo-tm">tm</span>
+                </div>
             </div>
 
-            <div class="logo-container">
-                <span class="logo-nintendo">Nintendo</span>
-                <span class="logo-gameboy">Game Boy</span>
-                <span class="logo-tm">tm</span>
-            </div>
         </div>
 
+        <div class="clouds cloud-3" id="bg3">
+        </div>
     </div>
 
-    <!-- <img src="./gb.png" alt=""> -->
 
 
-
-    <!----- Scripts ----->
-    <script src="./modules/external/gameboy/src/cpu.js"></script>
-    <script src="./modules/external/gameboy/src/ops.js"></script>
-    <script src="./modules/external/gameboy/src/mem.js"></script>
-    <script src="./modules/external/gameboy/src/ppu.js"></script>
-    <script src="./modules/external/gameboy/src/apu.js"></script>
-    <script src="./modules/external/gameboy/src/joypad.js"></script>
-    <script src="./modules/external/gameboy/src/main.js"></script>
-
-    <script>
-        window.onload = function () {
-            const canvas = document.getElementById('nanacanvas');
-            const gb = new Gameboy();
-            gb.AttachCanvas(canvas);
-
-            // Default settings
-            gb.SetFPS(60); // 120 is performant but 60 is smoother
-            gb.bootromEnabled = false;
-            gb.SetPallete(['fff6d3', 'f9a875', 'eb6b6f', '7c3f58']);
-
-            // const defaultVolume = 0.05;
-            // gb.SetVolume (defaultVolume);
-            // gb.EnableSound ();
-
-            gb.DisableAlphaBlend();
-            gb.SetAlphaBlend(0.7);
-
-            gb.keyboardEnabled = true;
-
-            fetch("./rom/el-jamon-volador_1.2.0.gb")
-                .then(response => response.blob())
-                .then(blob => {
-                    const fileReader = new FileReader();
-
-                    fileReader.onload = () => {
-                        const fileData = new Uint8Array(fileReader.result);
-                        gb.InsertRom(fileData);
-                        gb.Start();
-                    };
-                    fileReader.readAsArrayBuffer(blob);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        }
-    </script>
+    <script src="source/clouds.js" defer>
 </body>
 
 </html>
