@@ -11,15 +11,15 @@ img {
 }
 
 .container {
-    background-color: rgb(243, 243, 243);
+    background-color: green;
     position: relative;
     display: block;
+
+    width:  100%;
     height: 100%;
+    transform-origin: top left;
+    transform: scale(1); /* Set the initial scale to 1 */
 }
-
-
-
-
 
 /*
 /*   Clouds
@@ -35,7 +35,7 @@ img {
 /* -------------------------------------------------------------------------- */
 .cloud-background,
 .cloud-foreground {
-    width: 100%;
+    width:  100%;
     height: 350px;
     /* outline: 2px solid blue; */
     position: absolute;

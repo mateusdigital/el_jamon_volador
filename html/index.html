@@ -14,12 +14,12 @@
 
 <body>
     <div class="container">
-        <!-- <div class="cloud-container">
+        <div class="cloud-container">
             <div class="cloud-background"></div>
             <div class="cloud-background"></div>
             <div class="cloud-background"></div>
             <div class="cloud-background"></div>
-        </div> -->
+        </div>
 
         <div class="gameboy-container">
             <div class="gameboy">
@@ -64,13 +64,37 @@
                 </div>
             </div>
 
+
         </div>
 
-        <!-- <div class="cloud-container">
+        <div class="cloud-container">
             <div class="cloud-foreground"></div>
             <div class="cloud-foreground"></div>
-        </div> -->
+        </div>
     </div>
+
+    <script>
+        function resize_gameboy() {
+            const parent = document.querySelector(".container");
+            const gb     = document.querySelector(".gameboy-container");
+            if(parent.clientWidth > 480) {
+                return;
+            }
+
+            const scale = parent.clientWidth / 480;
+            const x = (scale * 50);
+            gb.style.transform = `scale(${scale})`;
+        }
+
+        window.addEventListener('load', function() {
+            resize_gameboy();
+            _make_all_clouds();
+        });
+        window.addEventListener('resize', function() {
+            resize_gameboy();
+            _make_all_clouds();
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/dat.gui@0.7.7/build/dat.gui.min.js"></script>
 
