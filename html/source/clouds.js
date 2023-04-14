@@ -64,17 +64,29 @@ function _make_cloud(div, color) {
 //------------------------------------------------------------------------------
 function _make_all_clouds()
 {
-    const background_colors = [
+    let background_colors = [
         "#6198bb",
         "#8ab4cf",
         "#b8d7eb",
         "#ddedfa",
     ]
 
-    const foreground_colors = [
+    let foreground_colors = [
         "#ffffff",
         "#f9f9f9",
     ]
+
+
+    if(false) {
+         background_colors = [
+            "red", "green", "blue", "yellow",
+        ]
+
+         foreground_colors = [
+            "magenta", "cyan"
+        ]
+    }
+
 
 
     const background_divs = document.querySelectorAll(".cloud-background");
