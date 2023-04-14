@@ -5,6 +5,7 @@
     margin: 0;
 }
 
+
 :root {
     --color1: #77adcf;
     --color2: #4c81a2;
@@ -17,8 +18,11 @@ body {
 
 
 .logo {
+    display:     block;
     margin-right: auto;
     margin-left:  auto;
+
+    padding: 2rem 3rem;
 }
 
 
