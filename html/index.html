@@ -8,14 +8,12 @@
 
     <link rel='stylesheet' href="./resources/css/main.css">
     <link rel='stylesheet' href="./resources/css/gameboy.css">
-
-    <link rel='shortcut icon' href='img/favicon.png' type='image/png'>
 </head>
 
 <body>
     <img class="logo" src="./resources/img/logo.png">
 
-    <div class="container">
+    <div class="top-container">
         <div class="cloud-container">
             <div class="cloud-background"></div>
             <div class="cloud-background"></div>
@@ -73,37 +71,20 @@
         </div>
     </div>
 
-    <div class="bottom-content"></div>
+    <div class="bottom-container">
+        <div>
+            <h1 class="title">El Jamon Volador</h1>
+            A flappy bird homage for the original Nintendo Game Boy.
+        </div>
+
+        <div>
+            Play online (just press space) or download the ROM.
+        </div>
+    </div>
 
 
-
-    <script>
-        function resize_gameboy() {
-            const parent = document.querySelector(".container");
-            const gb     = document.querySelector(".gameboy-container");
-            if(parent.clientWidth > 480) {
-                return;
-            }
-
-            const scale = parent.clientWidth / 480;
-            const x = (scale * 50);
-            gb.style.transform = `scale(${scale})`;
-        }
-
-        window.addEventListener('load', function() {
-            resize_gameboy();
-            _make_all_clouds();
-        });
-        window.addEventListener('resize', function() {
-            resize_gameboy();
-            _make_all_clouds();
-        });
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/dat.gui@0.7.7/build/dat.gui.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
-    <script src="source/clouds.js" defer>
+        <script src="source/clouds.js" defer></script>
+        <script src="source/gameboy.js" defer></script>
 
 </body>
 </html>

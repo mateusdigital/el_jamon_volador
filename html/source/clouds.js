@@ -125,11 +125,3 @@ function _make_all_clouds()
         element.style.setProperty("--duration", `${duration}s`);
     }
 }
-
-
-//
-// Entry Point
-//
-
-//------------------------------------------------------------------------------
-_make_all_clouds();
