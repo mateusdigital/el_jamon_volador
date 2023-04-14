@@ -1,45 +1,28 @@
-var gui = new dat.GUI();
-const fg_colors   = [
-    "#ffffff",
-    "#ffffff",
-]
+//
+// Functions
+//
 
-
-
-function showColorPicker(color, i) {
-    // Create an instance of the dat.GUI class
-
-
-    // Add a color picker to the GUI
-    var params = {
-      color: color
-    };
-    var colorControl = gui.addColor(params, 'color');
-
-      // When the user selects a color, log its value to the console
-    colorControl.onChange(function(value) {
-        fg_colors[i] = value;
-        make_all();
-    });
-  }
-
-
-
-function make_cloud(div, color) {
+//------------------------------------------------------------------------------
+// The logic to draw the clouds is the following:
+//   - Draw a big circle.
+//   - From a range of angles, select a random size
+//   - Draw circle of that size on that position.
+function _make_cloud(div, color) {
+    // @perf: We could optimize this b y using the same canvas??
+    // Cleaning the rect is faster that creating another? - abr 14, 2023
     const canvas = document.createElement("canvas");
+    const ctx    = canvas.getContext("2d");
 
-    // debugger
+    // Space that we can draw.
     const div_width  = div.clientWidth;
     const div_height = div.clientHeight;
 
     canvas.width  = div_width;
     canvas.height = div_height;
 
-    const center_radius   = 100;
-    const total_clouds    = Math.trunc(div_width / center_radius) + 1;
-    const total_subclouds = 8;
-
-    const ctx = canvas.getContext('2d');
+    const center_radius   = 60 + (Math.random() * 30);
+    const total_clouds    = Math.trunc(div_width / center_radius) + 1; // Draw many clouds as need to fill the screen.
+    const total_subclouds = 8 + (Math.random() * 4);
 
     for (let cloud_i = 0; cloud_i < total_clouds; ++cloud_i) {
         ctx.fillStyle = color;
@@ -47,15 +30,15 @@ function make_cloud(div, color) {
         ctx.save();
         ctx.translate(
             (cloud_i + 1) * center_radius + center_radius * cloud_i,
-            center_radius * 1.7
+            center_radius * 1.8 // Draw a little do the botton.
         );
 
+        // Bigger circle.
         ctx.beginPath();
             ctx.arc(0, 0, center_radius, 0, 2 * Math.PI);
         ctx.fill();
 
         for (let subcloud_i = 0; subcloud_i < total_subclouds; ++subcloud_i) {
-            // ctx.fillStyle = c[subcloud_i];
             ctx.fillStyle = color;
 
             const x = -Math.cos(subcloud_i) * center_radius;
@@ -65,7 +48,7 @@ function make_cloud(div, color) {
             v = Math.max(v, 0.2);
             v = Math.min(v, 0.8);
 
-            const r = v * center_radius;
+            const r = (v * center_radius);
 
             ctx.beginPath();
                 ctx.arc(x, y, r, 0, 2 * Math.PI);
@@ -78,53 +61,63 @@ function make_cloud(div, color) {
     div.style.backgroundImage = `url(${dataURL})`;
 }
 
-
-
-function make_all(first_time)
+//------------------------------------------------------------------------------
+function _make_all_clouds()
 {
-    {
-        const elements = document.querySelectorAll(".cloud-background");
-        const colors   = [
-            "#6198bb",
-            "#8ab4cf",
-            "#b8d7eb",
-            "#ddedfa",
-        ]
+    const background_colors = [
+        "#6198bb",
+        "#8ab4cf",
+        "#b8d7eb",
+        "#ddedfa",
+    ]
 
-        for(let i = 0; i < elements.length; ++i) {
-            const element = elements[i];
-            const color   = colors  [i];
-            console.log(i, color);
+    const foreground_colors = [
+        "#ffffff",
+        "#f9f9f9",
+    ]
 
-            make_cloud(element, color);
 
-            const pos     = (element.clientHeight * 0.25 * i);
-            element.style.top = `${pos}px`;
-        }
+    const background_divs = document.querySelectorAll(".cloud-background");
+    for(let i = 0; i < background_divs.length; ++i) {
+        const element = background_divs  [i];
+        const color   = background_colors[i];
+
+        _make_cloud(element, color);
+
+        const pos         = (element.clientHeight * 0.25 * i);
+        element.style.top = `${pos}px`;
+
+        // Controls the animation in CSS.
+        const duration = Math.floor(Math.random() * 10) + 10;
+        const delay    = Math.floor(Math.random() * 3 ) +  1;
+
+        element.style.setProperty("--delay",    `${delay}s`   );
+        element.style.setProperty("--duration", `${duration}s`);
     }
 
-    {
-        const elements = document.querySelectorAll(".cloud-foreground");
+    const foreground_divs = document.querySelectorAll(".cloud-foreground");
+    for(let i = 0; i < foreground_divs.length; ++i) {
+        const element = foreground_divs  [i];
+        const color   = foreground_colors[i];
 
+        _make_cloud(element, color);
 
-        for(let i = 0; i < elements.length; ++i) {
-            const element = elements[i];
-            const color   = fg_colors  [i];
+        const pos         = (element.clientHeight * 0.25 * i);
+        element.style.top = `${pos}px`;
 
-            make_cloud(element, color);
+        // Controls the animation in CSS.
+        const duration = Math.floor(Math.random() * 10) + 10;
+        const delay    = Math.floor(Math.random() * 3 ) +  1;
 
-            const pos     = (element.clientHeight * 0.25 * i);
-            element.style.top = `${pos}px`;
-        }
+        element.style.setProperty("--delay",    `${delay}s`   );
+        element.style.setProperty("--duration", `${duration}s`);
+    }
 }
-}
-
-make_all(true);
 
 
+//
+// Entry Point
+//
 
-const objects = document.querySelectorAll('.cloud-background');
-objects.forEach((object) => {
-    const delay = Math.floor(Math.random() * 3) + 1; // generate a random number between 1 and 3
-    object.style.setProperty('--delay', `${delay}s`); // set the --delay property to the random value
-});
+//------------------------------------------------------------------------------
+_make_all_clouds();

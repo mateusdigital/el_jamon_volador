@@ -1,81 +1,9 @@
-/* @font-face {
-    font-family: "RoSpritendo Semibold Beta";
-    src: url("/html/fonts/RoSpritendoSemiboldBeta-vmVwZ.otf") format("opentype");
-}
-
-
-
-@font-face {
-    font-family: "Snes Italic";
-    src: url("/html/resources/fonts/snes-font/SnesItalic-1G9Be.ttf") format("truetype");
-}
- */
 @import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 
 
 
-/* @font-face {
-    font-family: "Pretendo";
-    src: url("/html/resources/fonts/pretendo-font/Pretendo.ttf") format("truetype");
-} */
-
-body {
-    background: #0976e4;
-    /* display: grid; */
-    /* grid-template-columns: 1fr 1fr; */
-
-}
-
-img {
-    width: 100%;
-    height: 100%;
-}
-
-.container {
-    background-color: red;
-    position: relative;
-    display: block;
-    height: 100%;
-}
-
-.cloud-container {
-    position: relative;
-    display: block;
-    width: 100%;
-}
-
-.cloud-background, .cloud-foreground {
-    width: 100%;
-    height: 350px;
-    /* outline: 2px solid blue; */
-    position: absolute;
-
-    animation: up-down 10s ease-in-out infinite;
-    animation-delay: var(--delay);
-
-}
-
-@keyframes up-down {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-
-.cloud-foreground {
-    margin-top: -7rem;
-}
-
-
-
-
 .gameboy-container {
-    width:  30rem;
+    width: 30rem;
     height: 30rem;
 
     margin-left: auto;
@@ -84,46 +12,56 @@ img {
 
 @media (max-width: 500px) {
     body {
-        background-color: red;;
+        background-color: red;
+
+        width:  50%;
+        height: 50%;
     }
 }
 
 
 
+/*
+/*   Game boy
+/*
 
+/* -------------------------------------------------------------------------- */
 .gameboy {
     position: relative;
     top: 0rem;
 
     margin: 0vw auto;
 
-    width:  100%;
+    width: 100%;
     height: 100%;
 
-    display:  grid;
+    display: grid;
     grid-template-rows: 4rem 20rem 5rem;
 
     background: #eee;
+
     border-radius: 0.9rem 0.9rem 5rem 0.9rem;
     box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Top Details */
+/* -------------------------------------------------------------------------- */
 .top-details {
-    /* background-color: red; */
     display: grid;
     grid-template-rows: 2rem 0.6rem;
 }
 
 .top-details-vertical-container {
-    display:grid;
+    display: grid;
     grid-template-columns: auto auto;
     justify-content: space-between;
     margin: 0 2rem;
 }
-.top-details-vertical-container > div{
+
+.top-details-vertical-container>div {
     background-color: #d6d6d6;
     display: block;
-    width:  0.4rem;
+    width: 0.4rem;
     height: 100%;
     box-shadow: inset #9a989811 0 -1px 3px;
 }
@@ -135,6 +73,8 @@ img {
 }
 
 
+/* Screen */
+/* -------------------------------------------------------------------------- */
 .screen {
     display: grid;
     grid-template-rows: 2.1rem auto 2.4rem;
@@ -142,10 +82,11 @@ img {
     border-radius: 0.9rem 0.9rem 3rem 0.9rem;
     background-color: #4c4b50;
 
-    margin-left:  2rem;
+    margin-left: 2rem;
     margin-right: 2rem;
 }
 
+/* -------------------------------------------------------------------------- */
 .screen-header-container {
     /* background-color: aqua; */
     margin-top: 1rem;
@@ -161,47 +102,50 @@ img {
     gap: 0.6rem;
 }
 
+/* -------------------------------------------------------------------------- */
 .screen-header-stripes-container {
     display: grid;
     gap: 0.3rem;
 }
 
-.screen-header-stripes-container > div {
+/* -------------------------------------------------------------------------- */
+.screen-header-stripes-container>div {
     display: inline-block;
     width: 100%;
     height: 2px;
     background-color: #76314e;
 }
 
-.screen-header-stripes-container > div:nth-child(1){
+/* -------------------------------------------------------------------------- */
+.screen-header-stripes-container>div:nth-child(1) {
     display: inline-block;
     height: 2px;
     background-color: #19173f;
 }
 
+/* -------------------------------------------------------------------------- */
 .screen-header-text {
     display: inline-block;
     width: fit-content;
 
     color: #cbd0cb;
 
-    /* background-color: green; */
     font-family: "Cabin";
     font-weight: bolder;
     font-size: 0.8rem;
 }
 
-
-
+/* Power / Content */
+/* -------------------------------------------------------------------------- */
 .screen-content-container {
     display: block;
     /* background-color: violet; */
     height: 100%;
     display: grid;
     grid-template-columns: 4.8rem auto 4.8rem
-
 }
 
+/* -------------------------------------------------------------------------- */
 .screen-power-container {
     /* background-color: #0976e4; */
     display: grid;
@@ -210,6 +154,7 @@ img {
     justify-items: center;
 }
 
+/* -------------------------------------------------------------------------- */
 .screen-power-led {
     background-color: #F00;
     box-shadow:
@@ -217,16 +162,17 @@ img {
         inset #441313 0 -1px 9px,
         rgba(255, 0, 0, 0.5) 0 2px 12px;
 
-    width:  0.9rem;
+    width: 0.9rem;
     height: 0.9rem;
 
     display: block;
     border-radius: 50%;
 
     margin-bottom: 0.5rem;
-    margin-right:  0.7rem;
+    margin-right: 0.7rem;
 }
 
+/* -------------------------------------------------------------------------- */
 .screen-power-text {
     font-family: "Cabin";
     font-weight: bolder;
@@ -237,34 +183,37 @@ img {
     padding-bottom: 3rem;
 }
 
+/* -------------------------------------------------------------------------- */
 .screen-canvas-container {
     position: relative;
 }
 
+/* -------------------------------------------------------------------------- */
 .screen-canvas-shadow {
     display: block;
     position: absolute;
     width: 100%;
     height: 100%;
-    /* background-color: red; */
-    box-shadow: 1px 4px 10px -2px rgba(0,0,0,0.81) inset;
+    box-shadow: 1px 4px 10px -2px rgba(0, 0, 0, 0.81) inset;
 }
 
+/* -------------------------------------------------------------------------- */
 .screen-canvas {
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: #343c1a;
-    /* outline: 0.5rem solid black; */
 }
 
-
+/* Logo */
+/* -------------------------------------------------------------------------- */
 .logo-container {
-    color:  #1c1e5f;
+    color: #1c1e5f;
     margin-left: 2.0rem;
-    margin-top:  0.2rem;
+    margin-top: 0.2rem;
 }
 
+/* -------------------------------------------------------------------------- */
 .logo-nintendo {
     text-transform: capitalize;
 
@@ -272,6 +221,7 @@ img {
     font-family: "Pretendo";
 }
 
+/* -------------------------------------------------------------------------- */
 .logo-gameboy {
     text-transform: uppercase;
 
@@ -284,6 +234,7 @@ img {
     letter-spacing: -2px
 }
 
+/* -------------------------------------------------------------------------- */
 .logo-tm {
     text-transform: uppercase;
     font-weight: bold;
@@ -291,10 +242,3 @@ img {
     font-family: "Pretendo";
     margin-left: -0.3rem;
 }
-
-/* .stripes-container:nth-child(1) {
-    background-color: red;
-}
-.stripes-container:nth-child(2) {
-    background-color: blue;
-} */
