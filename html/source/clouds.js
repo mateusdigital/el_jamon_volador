@@ -1,16 +1,41 @@
-// const c = ["red", "blue", "green", "yellow", "magenta", "cyan"]
+var gui = new dat.GUI();
+const fg_colors   = [
+    "#ffffff",
+    "#ffffff",
+]
+
+
+
+function showColorPicker(color, i) {
+    // Create an instance of the dat.GUI class
+
+
+    // Add a color picker to the GUI
+    var params = {
+      color: color
+    };
+    var colorControl = gui.addColor(params, 'color');
+
+      // When the user selects a color, log its value to the console
+    colorControl.onChange(function(value) {
+        fg_colors[i] = value;
+        make_all();
+    });
+  }
+
+
 
 function make_cloud(div, color) {
     const canvas = document.createElement("canvas");
 
     // debugger
-    const div_width = div.clientWidth;
+    const div_width  = div.clientWidth;
     const div_height = div.clientHeight;
 
     canvas.width  = div_width;
     canvas.height = div_height;
 
-    const center_radius = 100;
+    const center_radius   = 100;
     const total_clouds    = Math.trunc(div_width / center_radius) + 1;
     const total_subclouds = 8;
 
@@ -22,7 +47,7 @@ function make_cloud(div, color) {
         ctx.save();
         ctx.translate(
             (cloud_i + 1) * center_radius + center_radius * cloud_i,
-            center_radius * 2.3
+            center_radius * 1.7
         );
 
         ctx.beginPath();
@@ -53,10 +78,53 @@ function make_cloud(div, color) {
     div.style.backgroundImage = `url(${dataURL})`;
 }
 
-const div = document.getElementById("bg1");
-const div2 = document.getElementById("bg2");
-const div3 = document.getElementById("bg3");
 
-make_cloud(div,  "red");
-make_cloud(div2, "blue");
-make_cloud(div3, "green");
+
+function make_all(first_time)
+{
+    {
+        const elements = document.querySelectorAll(".cloud-background");
+        const colors   = [
+            "#6198bb",
+            "#8ab4cf",
+            "#b8d7eb",
+            "#ddedfa",
+        ]
+
+        for(let i = 0; i < elements.length; ++i) {
+            const element = elements[i];
+            const color   = colors  [i];
+            console.log(i, color);
+
+            make_cloud(element, color);
+
+            const pos     = (element.clientHeight * 0.25 * i);
+            element.style.top = `${pos}px`;
+        }
+    }
+
+    {
+        const elements = document.querySelectorAll(".cloud-foreground");
+
+
+        for(let i = 0; i < elements.length; ++i) {
+            const element = elements[i];
+            const color   = fg_colors  [i];
+
+            make_cloud(element, color);
+
+            const pos     = (element.clientHeight * 0.25 * i);
+            element.style.top = `${pos}px`;
+        }
+}
+}
+
+make_all(true);
+
+
+
+const objects = document.querySelectorAll('.cloud-background');
+objects.forEach((object) => {
+    const delay = Math.floor(Math.random() * 3) + 1; // generate a random number between 1 and 3
+    object.style.setProperty('--delay', `${delay}s`); // set the --delay property to the random value
+});

@@ -4,6 +4,7 @@
 <head>
     <title>Pollen Boy</title>
     <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel='stylesheet' href="./resources/css/gameboy.css">
     <link rel='shortcut icon' href='img/favicon.png' type='image/png'>
@@ -11,10 +12,11 @@
 
 <body>
     <div class="container">
-        <div class="clouds cloud-1 red" id="bg1">
-        </div>
-
-        <div class="clouds cloud-2 blue" id="bg2">
+        <div class="cloud-container">
+            <div class="cloud-background"></div>
+            <div class="cloud-background"></div>
+            <div class="cloud-background"></div>
+            <div class="cloud-background"></div>
         </div>
 
         <div class="gameboy-container">
@@ -62,13 +64,16 @@
 
         </div>
 
-        <div class="clouds cloud-3" id="bg3">
+        <div class="cloud-container">
+            <div class="cloud-foreground"></div>
+            <div class="cloud-foreground"></div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/dat.gui@0.7.7/build/dat.gui.min.js"></script>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
     <script src="source/clouds.js" defer>
-</body>
 
+</body>
 </html>
