@@ -6,10 +6,7 @@ function resize_gameboy() {
   }
 
   const scale = parent.clientWidth / gb.clientWidth;
-  const parent_height = gb.clientHeight * scale;
-
   gb.style.transform = `scale(${scale})`;
-  parent.style.height = `${parent_height}px`;
 }
 
 

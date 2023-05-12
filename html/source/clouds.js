@@ -20,7 +20,7 @@ function _make_cloud(div, color) {
     canvas.width  = div_width;
     canvas.height = div_height;
 
-    const center_radius   = 60 + (Math.random() * 30);
+    const center_radius   = 55 + (Math.random() * 10);
     const total_clouds    = Math.trunc(div_width / center_radius) + 1; // Draw many clouds as need to fill the screen.
     const total_subclouds = 5 + (Math.random() * 4);
 
@@ -30,7 +30,7 @@ function _make_cloud(div, color) {
         ctx.save();
         ctx.translate(
             (cloud_i + 1) * center_radius + (center_radius * cloud_i),
-            center_radius * 1.7
+            center_radius * 1.8
         );
 
         // Bigger circle.
@@ -93,7 +93,11 @@ function _make_all_clouds()
     const background_divs = document.querySelectorAll(".cloud");
 
     const strict_height = (gb_aabb.height / background_divs.length);
-    const applied_height = strict_height + 120;
+    const applied_buffer = 150;
+    const applied_height = (strict_height + applied_buffer);
+
+    const parent_height = (strict_height * background_divs.length) + applied_buffer;
+    gb.parentElement.style.height = `${parent_height}px`;
 
     for(let i = 0; i < background_divs.length; ++i) {
         const element = background_divs  [i];
