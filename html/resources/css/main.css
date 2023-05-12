@@ -7,13 +7,11 @@
 
 
 :root {
-    --color1: #77adcf;
-    --color2: #4c81a2;
 }
 
 body {
-    background: var(--color2);
-    background: linear-gradient( 180deg, var(--color1) 0%, var(--color2) 50%);
+    background: red;
+    /* background: linear-gradient( 180deg, var(--color1) 0%, var(--color2) 50%); */
     height: 100vh;
 }
 
@@ -22,8 +20,7 @@ body {
     /* background-color: coral; */
     position: relative;
     width:  100%;
-
-    padding-bottom: 15rem;
+    background-color: goldenrod;
 }
 
 
@@ -60,15 +57,17 @@ body {
 }
 
 /* -------------------------------------------------------------------------- */
-.cloud-background,
-.cloud-foreground {
-    width:  100%;
-    height: 350px;
-    /* outline: 2px solid blue; */
+.cloud {
+    width:  100%;    
+    outline: 2px solid blue;
     position: absolute;
 
     animation: up-down var(--duration) ease-in-out infinite;
     animation-delay: var(--delay);
+}
+
+.fg { 
+    z-index: 1000;
 }
 
 @keyframes up-down {
@@ -86,8 +85,3 @@ body {
 }
 
 
-/* -------------------------------------------------------------------------- */
-.cloud-foreground {
-    /* Makes it on top of the game boy. */
-    margin-top: -7rem;
-}

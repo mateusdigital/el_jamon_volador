@@ -22,15 +22,15 @@ function _make_cloud(div, color) {
 
     const center_radius   = 60 + (Math.random() * 30);
     const total_clouds    = Math.trunc(div_width / center_radius) + 1; // Draw many clouds as need to fill the screen.
-    const total_subclouds = 8 + (Math.random() * 4);
+    const total_subclouds = 5 + (Math.random() * 4);
 
     for (let cloud_i = 0; cloud_i < total_clouds; ++cloud_i) {
         ctx.fillStyle = color;
 
         ctx.save();
         ctx.translate(
-            (cloud_i + 1) * center_radius + center_radius * cloud_i,
-            center_radius * 1.8 // Draw a little do the botton.
+            (cloud_i + 1) * center_radius + (center_radius * cloud_i),
+            center_radius * 1.7
         );
 
         // Bigger circle.
@@ -59,6 +59,7 @@ function _make_cloud(div, color) {
 
     const dataURL = canvas.toDataURL();
     div.style.backgroundImage = `url(${dataURL})`;
+    
 }
 
 //------------------------------------------------------------------------------
@@ -69,6 +70,8 @@ function _make_all_clouds()
         "#8ab4cf",
         "#b8d7eb",
         "#ddedfa",
+        "#ffffff",
+        "#f9f9f9",
     ]
 
     let foreground_colors = [
@@ -79,49 +82,36 @@ function _make_all_clouds()
 
     if(false) {
          background_colors = [
-            "red", "green", "blue", "yellow",
-        ]
-
-         foreground_colors = [
-            "magenta", "cyan"
+            "red", "green", "blue", "yellow",             "magenta", "cyan"
         ]
     }
 
 
+    const gb = document.querySelector(".gameboy-container");
+    const gb_aabb = gb.getBoundingClientRect();
 
-    const background_divs = document.querySelectorAll(".cloud-background");
+    const background_divs = document.querySelectorAll(".cloud");
+
+    const strict_height = (gb_aabb.height / background_divs.length);
+    const applied_height = strict_height + 120;
+
     for(let i = 0; i < background_divs.length; ++i) {
         const element = background_divs  [i];
         const color   = background_colors[i];
+        
+        const pos  = (strict_height * i);
+
+        element.style.top = `${pos}px`;
+        element.style.height = `${applied_height}px`;
+        // element.style.backgroundColor = color;
 
         _make_cloud(element, color);
-
-        const pos         = (element.clientHeight * 0.25 * i);
-        element.style.top = `${pos}px`;
 
         // Controls the animation in CSS.
         const duration = Math.floor(Math.random() * 10) + 10;
         const delay    = Math.floor(Math.random() * 3 ) +  1;
 
-        element.style.setProperty("--delay",    `${delay}s`   );
-        element.style.setProperty("--duration", `${duration}s`);
-    }
-
-    const foreground_divs = document.querySelectorAll(".cloud-foreground");
-    for(let i = 0; i < foreground_divs.length; ++i) {
-        const element = foreground_divs  [i];
-        const color   = foreground_colors[i];
-
-        _make_cloud(element, color);
-
-        const pos         = (element.clientHeight * 0.25 * i);
-        element.style.top = `${pos}px`;
-
-        // Controls the animation in CSS.
-        const duration = Math.floor(Math.random() * 10) + 10;
-        const delay    = Math.floor(Math.random() * 3 ) +  1;
-
-        element.style.setProperty("--delay",    `${delay}s`   );
-        element.style.setProperty("--duration", `${duration}s`);
+        // element.style.setProperty("--delay",    `${delay}s`   );
+        // element.style.setProperty("--duration", `${duration}s`);
     }
 }
