@@ -71,12 +71,12 @@ function _make_all_clouds()
         "#b8d7eb",
         "#ddedfa",
         "#ffffff",
-        "#f9f9f9",
+        "#f5f5f5",
     ]
 
     let foreground_colors = [
         "#ffffff",
-        "#f9f9f9",
+        "#",
     ]
 
 
@@ -115,7 +115,7 @@ function _make_all_clouds()
         const duration = Math.floor(Math.random() * 10) + 10;
         const delay    = Math.floor(Math.random() * 3 ) +  1;
 
-        // element.style.setProperty("--delay",    `${delay}s`   );
-        // element.style.setProperty("--duration", `${duration}s`);
+        element.style.setProperty("--delay",    `${delay}s`   );
+        element.style.setProperty("--duration", `${duration}s`);
     }
 }

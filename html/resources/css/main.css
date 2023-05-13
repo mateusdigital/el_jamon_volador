@@ -10,17 +10,19 @@
 }
 
 body {
-    background: red;
-    /* background: linear-gradient( 180deg, var(--color1) 0%, var(--color2) 50%); */
+    --color-1: red;
+    --color-2: blue;
+
+    background: linear-gradient(180deg, #b9e4ff 0%, #6198bb 50% );
     height: 100vh;
 }
 
 
 .top-container {
+    margin-top: 5rem;
     /* background-color: coral; */
     position: relative;
     width:  100%;
-    background-color: goldenrod;
 }
 
 
@@ -59,7 +61,7 @@ body {
 /* -------------------------------------------------------------------------- */
 .cloud {
     width:  100%;    
-    outline: 2px solid blue;
+    /* outline: 2px solid blue; */
     position: absolute;
 
     animation: up-down var(--duration) ease-in-out infinite;
