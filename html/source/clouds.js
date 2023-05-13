@@ -66,17 +66,13 @@ function _make_cloud(div, color) {
 function _make_all_clouds()
 {
     let background_colors = [
-        "#6198bb",
-        "#8ab4cf",
-        "#b8d7eb",
-        "#ddedfa",
-        "#ffffff",
-        "#f5f5f5",
-    ]
-
-    let foreground_colors = [
-        "#ffffff",
-        "#",
+        
+        "#b7e7fa",
+"#c9efff",
+"#daf2fc",
+"#e5f6fd",
+"#fafdfe",
+"#f7f9f7",
     ]
 
 
@@ -105,7 +101,7 @@ function _make_all_clouds()
         
         const pos  = (strict_height * i);
 
-        element.style.top = `${pos}px`;
+        element.style.top    = `${pos}px`;
         element.style.height = `${applied_height}px`;
         // element.style.backgroundColor = color;
 

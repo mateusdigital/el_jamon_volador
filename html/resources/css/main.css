@@ -1,51 +1,75 @@
 *::before,
 *::after,
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 
-:root {
-}
+
+/*
+/*   Clouds
+/*
+/* ------------------------------------------------------------------------- */
+:root {}
 
 body {
-    --color-1: red;
-    --color-2: blue;
+  --color-1: red;
+  --color-2: blue;
 
-    background: linear-gradient(180deg, #b9e4ff 0%, #6198bb 50% );
-    height: 100vh;
+  background: linear-gradient(180deg, #b9e4ff 0%, #6198bb 50%);
+  height: 100vh;  
+  background-color: #d7f0fa;
+  background-image:  radial-gradient(#f6abc0 3px, transparent 2px), radial-gradient(hsl(239, 80%, 82%) 2px, #d7f0fa 3px);
+  background-size: 80px 80px;
+  background-position: 0 0,40px 40px;
+  z-index: -1000;
 }
 
+/*
+/*   Containers
+/*
 
+/* The gameboy and the clouds */
 .top-container {
-    margin-top: 5rem;
-    /* background-color: coral; */
-    position: relative;
-    width:  100%;
+  margin-top: 5rem;
+  position: relative;
+  width: 100%;
 }
 
-
-.logo {
-    display:     block;
-    margin-right: auto;
-    margin-left:  auto;
-
-    padding: 2rem 3rem;
-}
-
-
+/* Logo and page content */
 .bottom-container {
-    display: block;
-    width: 100%;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color:red;
-     /* var(--color2); */
-
-    /* padding:2rem; */
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+/*
+/*   Logo
+/*
+
+/* ------------------------------------------------------------------------- */
+.logo {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  /* padding: 2rem 3rem; */
+}
+
+@media (max-width: 350px) { 
+  .logo { 
+    width:  70%;
+    height: 70%;
+  }
+}
+
+
+
 
 /*
 /*   Clouds
@@ -53,37 +77,35 @@ body {
 
 /* -------------------------------------------------------------------------- */
 .cloud-container {
-    position: relative;
-    display: block;
-    width: 100%;
+  position: relative;
+  display: block;
+  width: 100%;
 }
 
 /* -------------------------------------------------------------------------- */
 .cloud {
-    width:  100%;    
-    /* outline: 2px solid blue; */
-    position: absolute;
+  width: 100%;
+  /* outline: 2px solid blue; */
+  position: absolute;
 
-    animation: up-down var(--duration) ease-in-out infinite;
-    animation-delay: var(--delay);
+  animation: up-down var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
 }
 
-.fg { 
-    z-index: 1000;
+.fg {
+  z-index: 1000;
 }
 
 @keyframes up-down {
-    0% {
-        transform: translateY(0);
-    }
+  0% {
+    transform: translateY(0);
+  }
 
-    50% {
-        transform: translateY(-20px);
-    }
+  50% {
+    transform: translateY(-20px);
+  }
 
-    100% {
-        transform: translateY(0);
-    }
+  100% {
+    transform: translateY(0);
+  }
 }
-
-

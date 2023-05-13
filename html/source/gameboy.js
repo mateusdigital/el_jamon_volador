@@ -5,8 +5,11 @@ function resize_gameboy() {
     return;
   }
 
-  const scale = parent.clientWidth / gb.clientWidth;
-  gb.style.transform = `scale(${scale})`;
+  const scale = parent.clientWidth / gb.clientWidth * 0.9;
+  const translateX = -((parent.clientWidth - gb.clientWidth) / 4) * scale;
+  const translateY = 0; (parent.clientHeight - gb.clientHeight) / 2;
+
+  gb.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
 }
 
 
