@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+
+
+
+.gameboy-container {
+  width: 30rem;
+  height: 30rem;
+
+  margin-left: auto;
+  margin-right: auto;
+  transform-origin: top left;
+  transform: scale(1);
+  /* Set the initial scale to 1 */
+}
+
+/*
+/*   Game boy
+/*
+
+/* -------------------------------------------------------------------------- */
+.gameboy {
+  display: grid;
+  grid-template-rows: 4rem 20rem 5rem;
+
+  background: #eee;
+
+  border-radius: 0.9rem 0.9rem 5rem 0.9rem;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Top Details */
+/* -------------------------------------------------------------------------- */
+.top-details {
+  display: grid;
+  grid-template-rows: 2rem 0.6rem;
+}
+
+.top-details-vertical-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  margin: 0 2rem;
+}
+
+.top-details-vertical-container>div {
+  background-color: #d6d6d6;
+  display: block;
+  width: 0.4rem;
+  height: 100%;
+  box-shadow: inset #9a989811 0 -1px 3px;
+}
+
+.top-details-horizontal {
+  background-color: #d6d6d6;
+  height: 0.4rem;
+  box-shadow: inset #9a989811 0 -2px 3px;
+}
+
+
+/* Screen */
+/* -------------------------------------------------------------------------- */
+.screen {
+  display: grid;
+  grid-template-rows: 2.1rem auto 2.4rem;
+
+  border-radius: 0.9rem 0.9rem 3rem 0.9rem;
+  background-color: #4c4b50;
+
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+/* -------------------------------------------------------------------------- */
+.screen-header-container {
+  /* background-color: aqua; */
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+
+  display: grid;
+  grid-template-columns: 2fr auto 1fr;
+  align-items: center;
+  align-content: center;
+
+  gap: 0.6rem;
+}
+
+/* -------------------------------------------------------------------------- */
+.screen-header-stripes-container {
+  display: grid;
+  gap: 0.3rem;
+}
+
+/* -------------------------------------------------------------------------- */
+.screen-header-stripes-container>div {
+  display: inline-block;
+  width: 100%;
+  height: 2px;
+  background-color: #76314e;
+}
+
+/* -------------------------------------------------------------------------- */
+.screen-header-stripes-container>div:nth-child(1) {
+  display: inline-block;
+  height: 2px;
+  background-color: #19173f;
+}
+
+/* -------------------------------------------------------------------------- */
+.screen-header-text {
+  display: inline-block;
+  width: fit-content;
+
+  color: #cbd0cb;
+
+  font-family: "Cabin";
+  font-weight: bolder;
+  font-size: 0.8rem;
+}
+
+/* Power / Content */
+/* -------------------------------------------------------------------------- */
+.screen-content-container {
+  display: block;
+  /* background-color: violet; */
+  height: 100%;
+  display: grid;
+  grid-template-columns: 4.8rem auto 4.8rem
+}
+
+/* -------------------------------------------------------------------------- */
+.screen-power-container {
+  /* background-color: #0976e4; */
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+/* -------------------------------------------------------------------------- */
+.screen-power-led {
+  background-color: #F00;
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0 -1px 7px 1px,
+    inset #441313 0 -1px 9px,
+    rgba(255, 0, 0, 0.5) 0 2px 12px;
+
+  width: 0.9rem;
+  height: 0.9rem;
+
+  display: block;
+  border-radius: 50%;
+
+  margin-bottom: 0.5rem;
+  margin-right: 0.7rem;
+}
+
+/* -------------------------------------------------------------------------- */
+.screen-power-text {
+  font-family: "Cabin";
+  font-weight: bolder;
+  font-size: 0.75rem;
+
+  color: #cbd0cb;
+
+  padding-bottom: 3rem;
+}
+
+/* -------------------------------------------------------------------------- */
+.screen-canvas-container {
+  position: relative;
+}
+
+/* -------------------------------------------------------------------------- */
+.screen-canvas-shadow {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: 1px 4px 10px -2px rgba(0, 0, 0, 0.81) inset;
+}
+
+/* -------------------------------------------------------------------------- */
+.screen-canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #343c1a;
+}
+
+/* Logo */
+/* -------------------------------------------------------------------------- */
+.logo-container {
+  color: #1c1e5f;
+  margin-left: 2.0rem;
+  margin-top: 0.2rem;
+}
+
+/* -------------------------------------------------------------------------- */
+.logo-nintendo {
+  text-transform: capitalize;
+
+  font-size: 1.2rem;
+  font-family: "Pretendo";
+}
+
+/* -------------------------------------------------------------------------- */
+.logo-gameboy {
+  text-transform: uppercase;
+
+  font-size: 2.2rem;
+
+  font-family: "Cabin";
+  font-weight: 900;
+  font-style: italic;
+
+  letter-spacing: -2px
+}
+
+/* -------------------------------------------------------------------------- */
+.logo-tm {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.6rem;
+  font-family: "Pretendo";
+  margin-left: -0.3rem;
+}

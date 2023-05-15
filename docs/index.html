@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Pollen Boy</title>
+  <meta charset='UTF-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://kit.fontawesome.com/4da06b246b.js" crossorigin="anonymous"></script>
+  <link rel='stylesheet' href="./resources/css/main.css">
+  <link rel='stylesheet' href="./resources/css/gameboy.css">
+</head>
+
+<body>
+  <div class="background">
+  </div>
+  <div class="top-container">
+    <div class="cloud-container">
+      <div class="cloud"></div>
+      <div class="cloud"></div>
+      <div class="cloud"></div>
+      <div class="cloud"></div>
+
+      <div class="cloud fg"></div>
+      <div class="cloud fg"></div>
+    </div>
+
+    <div class="gameboy-container">
+      <div class="gameboy">
+        <div class="top-details">
+          <div class="top-details-vertical-container">
+            <div></div>
+            <div></div>
+          </div>
+          <div class="top-details-horizontal"></div>
+        </div>
+
+        <div class="screen">
+          <div class="screen-header-container">
+            <div class="screen-header-stripes-container">
+              <div></div>
+              <div></div>
+            </div>
+            <span class="screen-header-text">DOT MATRIX WITH STEREO SOUND</span>
+            <div class="screen-header-stripes-container">
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+
+          <div class="screen-content-container">
+            <div class="screen-power-container">
+              <div class="screen-power-led"></div>
+              <span class="screen-power-text">BATTERY</span>
+            </div>
+            <div class="screen-canvas-container">
+              <canvas id='nanacanvas' class="screen-canvas" width='160' height='144'></canvas>
+              <div class="screen-canvas-shadow">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="logo-container">
+          <span class="logo-nintendo">Nintendo</span>
+          <span class="logo-gameboy">Game Boy</span>
+          <span class="logo-tm">tm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="bottom-container">
+    <img class="logo" src="./resources/img/logo.png">
+
+
+    <div class="content">
+      <h1>
+        A flappy bird <span class="underline-pink">homage</span> for the original Nintendo <span class="underline-blue">Game Boy</span>
+      </h1>
+
+      <div class="button-container">
+        <div class="button">
+          <i class="fa-solid fa-circle-down"></i> <a herf="">Download the ROM</a> 
+        </div>
+  
+        <div class="button">
+          <i class="fa-brands fa-github"></i> Source Code
+        </div>
+      </div>
+
+      <div class="text-container">
+        <div class="outline">
+          <i class="fa-solid fa-circle-play"></i> Play online (just press space)
+        </div>
+  
+        <div class="outline">
+          <i class="fa-solid fa-globe"></i> <a href="https://mateus.digital">https://mateus.digital</a> 
+        </div>
+      </div>
+
+    </div>
+
+    <div>
+    </div>
+  </div>
+
+  <script src="source/clouds.js" defer></script>
+  <script src="source/gameboy.js" defer></script>
+
+</body>
+
+</html>

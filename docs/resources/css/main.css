@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Short+Stack&display=swap');
+
+*::before,
+*::after,
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/*
+/*   General
+/*
+
+/* ------------------------------------------------------------------------- */
+body {
+  /* https://www.magicpattern.design/tools/css-backgrounds */
+  background: linear-gradient(180deg, #b9e4ff 0%, #6198bb 50%);
+  background-color: #d7f0fa;
+  background-image: radial-gradient(#f6abc0 3px, transparent 2px), radial-gradient(hsl(239, 80%, 82%) 2px, #d7f0fa 3px);
+  background-size: 80px 80px;
+  background-position: 0 0, 40px 40px;
+
+  height: 100vh;
+
+  font-family: 'Short Stack', cursive;
+}
+
+/*
+/*   Containers
+/*
+
+/* The gameboy and the clouds */
+.top-container {
+  position: relative;
+  margin-top: 5rem;
+  width: 100%;
+}
+
+/* Logo and page content */
+.bottom-container {
+  display: block;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1000;
+}
+
+/* Page text */
+.content {
+  position: relative;
+  top: -6rem;
+  background-color: #f7f9f7;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 480px;
+  /* Same size as the Gameboy */
+  text-align: center;
+  border-radius: 1rem;
+  padding: 1rem;
+
+  border-width: 3px;
+  border-style: dashed;
+  border-color: #f6abc0 #6198bb #acaef6 #6198bb;
+  /* border-image: linear-gradient(to right, #, #) 1; */
+
+
+
+}
+
+h1 {
+  font-size: 140%;
+  margin-top: 5rem;
+  line-height: 150%;
+}
+
+p {
+  padding: 1rem 0;
+}
+
+.button-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.button {
+  display: inline-block;
+  background-color: red;
+  padding: 8px 16px;
+
+  margin: 0.5rem 0.5rem;
+
+  border-radius: 0.75rem;
+  border: 1px solid #f390ac;
+  box-shadow: 0px 6px 0px 0px #ee6f93;
+  background: linear-gradient(to bottom, #f6abc0 5%, #f390ac 100%);
+  background-color: #f6abc0;
+
+
+  cursor: pointer;
+
+  color: #ffffff;
+
+  font-weight: bold;
+  text-decoration: none;
+
+  text-shadow: 0px 2px 0px #b34866;
+}
+
+.button:hover {
+  background: linear-gradient(to bottom, #f390ac 5%, #f6abc0 100%);
+}
+
+.button:active {
+  position: relative;
+  top: 4px;
+  box-shadow: 0px 2px 0px 0px #f390ac;
+}
+
+
+
+.outline,
+.outline a,
+.outline a:visited {
+  display: inline-block;
+  color: #424242;
+
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 0.5rem;
+}
+
+.underline-pink {
+  border-bottom: 3px dotted #f390ac;
+}
+
+.underline-blue {
+  border-bottom: 3px dotted #acaef6;
+}
+
+/*
+/*   Logo
+/*
+
+/* ------------------------------------------------------------------------- */
+.logo {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1000;
+  /* padding: 2rem 3rem; */
+}
+
+@media (max-width: 350px) {
+  .logo {
+    width: 70%;
+    height: 70%;
+  }
+
+  body {
+    font-size: 80%;
+  }
+}
+
+
+
+
+/*
+/*   Clouds
+/*
+
+/* -------------------------------------------------------------------------- */
+.cloud-container {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+/* -------------------------------------------------------------------------- */
+.cloud {
+  width: 100%;
+  /* outline: 2px solid blue; */
+  position: absolute;
+
+  animation: up-down var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.fg {
+  z-index: 1000;
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
