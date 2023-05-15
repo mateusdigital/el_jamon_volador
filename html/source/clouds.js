@@ -92,7 +92,7 @@ function _make_all_clouds()
     const applied_buffer = 150;
     const applied_height = (strict_height + applied_buffer);
 
-    const parent_height = (strict_height * background_divs.length) + applied_buffer;
+    const parent_height = (strict_height * background_divs.length) + applied_buffer * 0.5;
     gb.parentElement.style.height = `${parent_height}px`;
 
     for(let i = 0; i < background_divs.length; ++i) {
