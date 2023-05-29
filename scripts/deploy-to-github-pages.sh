@@ -38,7 +38,7 @@ readonly NEXT_BUILD="$(( CURR_BUILD + 1 ))";
 readonly DATE="$(date +'%H:%M:%S %d-%m-%Y - %Z')";
 
 
-# git checkout publish;
+git checkout publish;
 
 ## clean dir.
 rm -rf   "${ROOT_DIR}/docs/";
@@ -64,7 +64,6 @@ cat "${ROOT_DIR}/docs/index.html"         \
 
 echo "${NEXT_BUILD}" > "${ROOT_DIR}/.buildno";
 
-#
-#
-# git add docs/;
-# git commit -m "$0 - build: $NEXT_BUILD - $DATE";
+## Commit
+git add docs/;
+git commit -m "$0 - build: $NEXT_BUILD - $DATE";
