@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Pollen Boy</title>
+  <title>El Jamon Volador - mateus.digital</title>
   <meta charset='UTF-8'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -77,14 +77,15 @@
 
     <div class="content">
       <h1>
-        A flappy bird <span class="underline-pink">homage</span> for the original Nintendo <span class="underline-blue">Game Boy</span>
+        A flappy bird <span class="underline-pink">homage</span> for the original Nintendo <span
+          class="underline-blue">Game Boy</span>
       </h1>
 
       <div class="button-container">
         <div class="button">
-          <i class="fa-solid fa-circle-down"></i> <a herf="">Download the ROM</a> 
+          <i class="fa-solid fa-circle-down"></i> <a herf="">Download the ROM</a>
         </div>
-  
+
         <div class="button">
           <i class="fa-brands fa-github"></i> Source Code
         </div>
@@ -94,9 +95,9 @@
         <div class="outline">
           <i class="fa-solid fa-circle-play"></i> Play online (just press space)
         </div>
-  
+
         <div class="outline">
-          <i class="fa-solid fa-globe"></i> <a href="https://mateus.digital">https://mateus.digital</a> 
+          <i class="fa-solid fa-globe"></i> <a href="https://mateus.digital">https://mateus.digital</a>
         </div>
       </div>
 
@@ -109,6 +110,65 @@
   <script src="source/clouds.js" defer></script>
   <script src="source/gameboy.js" defer></script>
 
+
+  <!-- -------------------------------------------------------------------- -->
+  <!-- GAME BOY EMULATOR                                                    -->
+  <!-- -------------------------------------------------------------------- -->
+  <!----- Scripts ----->
+  <script src='./modules/external/gameboy/src/cpu.js'></script>
+  <script src='./modules/external/gameboy/src/ops.js'></script>
+  <script src='./modules/external/gameboy/src/mem.js'></script>
+  <script src='./modules/external/gameboy/src/ppu.js'></script>
+  <script src='./modules/external/gameboy/src/apu.js'></script>
+  <script src='./modules/external/gameboy/src/joypad.js'></script>
+  <script src='./modules/external/gameboy/src/main.js'></script>
+
+  <script>
+    const nanaCanvas = document.getElementById('nanacanvas');
+
+    // Gameboy
+    const gb = new Gameboy();
+    gb.AttachCanvas(nanaCanvas);
+    gb.SetFPS(60);
+    gb.bootromEnabled = false;
+
+    gb.SetPallete(['f7bef7', 'e78686', '7733e7', '2c2c96']);
+
+    // const defaultVolume = 0.0;
+    // gb.SetVolume(defaultVolume);
+    // gb.EnableSound();
+
+    gb.DisableAlphaBlend();
+    // gb.SetAlphaBlend(0.7);
+
+    gb.keyboardEnabled = true;
+
+    function readUint8ArrayFromFile(filename) {
+      return fetch(filename)
+        .then(response => response.blob())
+        .then(blob => {
+          return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+              const arrayBuffer = reader.result;
+              const uint8Array = new Uint8Array(arrayBuffer);
+              resolve(uint8Array);
+            };
+            reader.onerror = reject;
+            reader.readAsArrayBuffer(blob);
+          });
+        });
+    }
+
+    readUint8ArrayFromFile("game.gb")
+      .then(uint8Array => {
+        gb.InsertRom(uint8Array); // This may throw an error
+        gb.Start();
+      })
+      .catch(error => {
+        console.error(error);
+      })
+  </script>
 </body>
 
 </html>
