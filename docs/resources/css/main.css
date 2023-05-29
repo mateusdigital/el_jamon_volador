@@ -1,3 +1,25 @@
+/*~---------------------------------------------------------------------------*/
+/*                               *       +                                    */
+/*                         '                  |                               */
+/*                     ()    .-.,="``"=.    - o -                             */
+/*                           '=/_       \     |                               */
+/*                        *   |  '=._    |                                    */
+/*                             \     `=./`,        '                          */
+/*                          .   '=.__.=' `='      *                           */
+/*                 +                         +                                */
+/*                      O      *        '       .                             */
+/*                                                                            */
+/*  File      : main.css                                                      */
+/*  Project   : flappy_gb                                                     */
+/*  Date      : Apr 11, 2023                                                  */
+/*  License   : GPLv3                                                         */
+/*  Author    : mateus.digital <hello@mateus.digital>                         */
+/*  Copyright : mateus.digital - 2023                                         */
+/*                                                                            */
+/*  Description :                                                             */
+/*    Defines the styles for the webpage                                      */
+/*---------------------------------------------------------------------------~*/
+
 @import url('https://fonts.googleapis.com/css2?family=Short+Stack&display=swap');
 
 *::before,
@@ -136,6 +158,11 @@ p {
 
 .underline-blue {
   border-bottom: 3px dotted #acaef6;
+}
+
+.version-info {
+  font-size: 70%;
+  padding-top: 1.5rem;
 }
 
 /*

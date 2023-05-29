@@ -1,3 +1,25 @@
+<!-- ~---------------------------------------------------------------------- -->
+<!--                                *       +                                -->
+<!--                          '                  |                           -->
+<!--                      ()    .-.,="``"=.    - o -                         -->
+<!--                            '=/_       \     |                           -->
+<!--                         *   |  '=._    |                                -->
+<!--                              \     `=./`,        '                      -->
+<!--                           .   '=.__.=' `='      *                       -->
+<!--                  +                         +                            -->
+<!--                       O      *        '       .                         -->
+<!--                                                                         -->
+<!--   File      : index.html                                                -->
+<!--   Project   : flappy_gb                                                 -->
+<!--   Date      : Feb 23, 2023                                              -->
+<!--   License   : GPLv3                                                     -->
+<!--   Author    : mateus.digital <hello@mateus.digital>                     -->
+<!--   Copyright : mateus.digital - 2023                                     -->
+<!--                                                                         -->
+<!--   Description :                                                         -->
+<!--    The el jamon volador landing page                                    -->
+<!-- ----------------------------------------------------------------------~ -->
+
 <!DOCTYPE html>
 <html>
 
@@ -111,10 +133,6 @@
     </div>
   </div>
 
-  <script src="source/clouds.js" defer></script>
-  <script src="source/gameboy.js" defer></script>
-
-
   <!-- -------------------------------------------------------------------- -->
   <!-- GAME BOY EMULATOR                                                    -->
   <!-- -------------------------------------------------------------------- -->
@@ -137,6 +155,7 @@
     gb.bootromEnabled = false;
 
     gb.SetPallete(['f7bef7', 'e78686', '7733e7', '2c2c96']);
+    gb.SetPallete(['fff6d3', 'f9a875', 'eb6b6f', '7c3f58']);
 
     // const defaultVolume = 0.0;
     // gb.SetVolume(defaultVolume);
@@ -164,7 +183,7 @@
         });
     }
 
-    readUint8ArrayFromFile("game.gb")
+    readUint8ArrayFromFile("./roms/el-jamon-volador__version_.gb")
       .then(uint8Array => {
         gb.InsertRom(uint8Array); // This may throw an error
         gb.Start();
@@ -173,6 +192,12 @@
         console.error(error);
       })
   </script>
+
+
+  <!-- --------------------------------------------------------------------- -->
+  <!-- OUR SCRIPTS                                                           -->
+  <!-- --------------------------------------------------------------------- -->
+  <script src="source/main.js" defer></script>
 </body>
 
 </html>

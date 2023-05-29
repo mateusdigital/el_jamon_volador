@@ -383,8 +383,6 @@ const Mem = function (nes, cpu) {
             this.romName += String.fromCharCode (rom [i]);
         }
 
-        document.title = 'Pollen Boy: ' + this.romName;
-
         // ---- CGB MODE ---- //
         if (rom [0x143] === 0xc0)
             throw 'rom is gb color only :(';

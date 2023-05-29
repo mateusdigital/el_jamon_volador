@@ -1,4 +1,3 @@
-<!----- Scripts ----->
 <script src="./modules/external/gameboy/src/cpu.js" defer></script>
 <script src="./modules/external/gameboy/src/ops.js" defer></script>
 <script src="./modules/external/gameboy/src/mem.js" defer></script>
