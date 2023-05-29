@@ -151,7 +151,7 @@ function make_clouds() {
   const background_divs = document.querySelectorAll(".cloud");
 
   const strict_height  = (gb_aabb.height / background_divs.length);
-  const applied_buffer = 150;
+  const applied_buffer = 200;
   const applied_height = (strict_height + applied_buffer);
 
   const parent_height           = (strict_height * background_divs.length) + applied_buffer * 0.5;

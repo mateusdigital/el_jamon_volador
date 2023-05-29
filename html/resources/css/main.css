@@ -120,18 +120,25 @@ p {
 
 
   cursor: pointer;
-
   color: #ffffff;
+
 
   font-weight: bold;
   text-decoration: none;
 
   text-shadow: 0px 2px 0px #b34866;
 }
+.button a {
+  color: #ffffff;
+
+  font-weight: bold;
+  text-decoration: none;
+}
 
 .button:hover {
   background: linear-gradient(to bottom, #f390ac 5%, #f6abc0 100%);
 }
+
 
 .button:active {
   position: relative;
