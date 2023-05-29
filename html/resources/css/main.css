@@ -138,6 +138,11 @@ p {
   border-bottom: 3px dotted #acaef6;
 }
 
+.version-info {
+  font-size: 70%;
+  padding-top: 1.5rem;
+}
+
 /*
 /*   Logo
 /*

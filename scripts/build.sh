@@ -1,19 +1,26 @@
 #!/usr/bin/env bash
 ##~---------------------------------------------------------------------------##
-##                        _      _                 _   _                      ##
-##                    ___| |_ __| |_ __ ___   __ _| |_| |_                    ##
-##                   / __| __/ _` | '_ ` _ \ / _` | __| __|                   ##
-##                   \__ \ || (_| | | | | | | (_| | |_| |_                    ##
-##                   |___/\__\__,_|_| |_| |_|\__,_|\__|\__|                   ##
+##                               *       +                                    ##
+##                         '                  |                               ##
+##                     ()    .-.,="``"=.    - o -                             ##
+##                           '=/_       \     |                               ##
+##                        *   |  '=._    |                                    ##
+##                             \     `=./`,        '                          ##
+##                          .   '=.__.=' `='      *                           ##
+##                 +                         +                                ##
+##                      O      *        '       .                             ##
 ##                                                                            ##
 ##  File      : build.sh                                                      ##
 ##  Project   : flappy_gb                                                     ##
 ##  Date      : Sep 22, 2019                                                  ##
 ##  License   : GPLv3                                                         ##
-##  Author    : stdmatt <stdmatt@pixelwizards.io>                             ##
-##  Copyright : stdmatt - 2019, 2020, 2023                                    ##
+##  Author    : mateus.digital <hello@mateus.digital>                         ##
+##  Copyright : mateus.digital - 2019, 2020, 2023                             ##
 ##                                                                            ##
 ##  Description :                                                             ##
+##    This script builds the game boy version of El Jamon Volador.            ##
+##    As 29/05/23 it only can be built in macOS hosts, since the              ##
+##    new version of the compiler on GNU doesn't produce a valid binary.      ##
 ##                                                                            ##
 ##---------------------------------------------------------------------------~##
 
@@ -34,7 +41,7 @@ readonly INCLUDE_DIR="${ROOT_DIR}/game/include";
 
 ##------------------------------------------------------------------------------
 readonly PROJECT_PACKAGE_NAME="el-jamon-volador";
-readonly PROJECT_VERSION="1.2.0";
+readonly PROJECT_VERSION="$(git describe --abbrev=0 --tags)"
 readonly FULL_PACKAGE_NAME="${PROJECT_PACKAGE_NAME}_${PROJECT_VERSION}.gb";
 
 
@@ -64,33 +71,10 @@ echo "Cleaning build directory";
 rm    -rf "$BUILD_DIR";
 mkdir -p  "$BUILD_DIR";
 
-echo "Building $PROJECT_NAME - $FINAL_VERSION";
+echo "Building $PROJECT_NAME - $PROJECT_VERSION";
 
 ## Compile the game.
 $LCC -o                               \
     ${BUILD_DIR}/${FULL_PACKAGE_NAME} \
     ${SOURCE_DIR}/*.c                 \
     ${INCLUDE_DIR}/res/flappy.c
-
-# ##
-# ## HTML
-# if [ -n  "$(pw_getopt_exists "--html" "$@")" ]; then
-#     echo "Building HTML...";
-#     cp -v ${BUILD_DIR}/${FULL_PACKAGE_NAME} ${HTML_DIR}/rom/game.gb
-# fi;
-#
-# ##
-# ## Dist
-# test -z "$(pw_getopt_exists "--dist" "$@")" && exit;
-# echo "Creating the distribution artifact!!!";
-#
-# echo "Cleaning dist directory";
-# rm    -rf "$DIST_DIR";
-# mkdir -p  "$DIST_DIR";
-#
-# echo "Creating zip file";
-# ZIP_FILENAME="${PROJECT_PACKAGE_NAME}_v${FINAL_VERSION}.zip";
-# pw_pushd "${BUILD_DIR}";
-#     zip -r "${ZIP_FILENAME}" ".";
-#     mv "${ZIP_FILENAME}" "${DIST_DIR}";
-# pw_popd
