@@ -1,6 +1,5 @@
 build/
 dist/
-docs/
 .buildno
 
 .vscode/
