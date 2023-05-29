@@ -1,9 +1,10 @@
 build/
 dist/
+docs/
+.buildno
 
 .vscode/
 .idea/
-*.gb
 *.sav
 .map
 *.s19
