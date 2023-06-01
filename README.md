@@ -12,8 +12,8 @@ El Jamon Volador is homage to Flappy Bird developed for the original Nintendo's 
 
 It is my first Game Boy game!
 
-You can [play it online](http://stdmatt.com/games/el_ramon_volador)
-and [download the ROM](http://stdmatt.com/games/el_ramon_volador).
+You can [play it online](https://mateus.digital/el_jamon_volador)
+and [download the ROM](https://mateus.digital/el_jamon_volador).
 
 
 The Game Boy frame was developed by me using pure CSS - [give a look](https://mateus.digital/projects/gameboy-css) :)
