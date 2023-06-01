@@ -34,7 +34,7 @@ As usual, you are **very welcomed** to **share** and **hack** it.
 
 ## Building
 
-```bash
+```
     CAVEAT: It just builds on OSX for now - for some reason an invalid rom
     is generated with the gbdk-2020 and in non OSX hosts.
 ```
