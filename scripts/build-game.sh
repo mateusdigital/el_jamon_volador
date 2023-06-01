@@ -10,7 +10,7 @@
 ##                 +                         +                                ##
 ##                      O      *        '       .                             ##
 ##                                                                            ##
-##  File      : build.sh                                                      ##
+##  File      : build-game.sh                                                 ##
 ##  Project   : flappy_gb                                                     ##
 ##  Date      : Sep 22, 2019                                                  ##
 ##  License   : GPLv3                                                         ##
