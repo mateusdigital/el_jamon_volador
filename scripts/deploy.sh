@@ -36,15 +36,7 @@ readonly ROOT_DIR="$(dirname "$SCRIPT_DIR")";
 
 readonly SOURCE_FOLDER="${ROOT_DIR}/out";
 readonly REMOTE_SERVER="mateus@mateus.digital";
-readonly REMOTE_FOLDER="/var/www/el_jamon_volador";
-
-readonly curr_build=$(                  \
-    cat "${ROOT_DIR}/pages/index.js" |  \
-    grep "const build = "            |  \
-    cut -d" " -f4 | tr -d ";"           \
-);
-
-echo "==> CURR BUILD: $curr_build";
+readonly REMOTE_FOLDER="/var/www/mateus.digital/el_jamon_volador";
 
 rsync -avz                                       \
       --delete "${SOURCE_FOLDER}/"               \
