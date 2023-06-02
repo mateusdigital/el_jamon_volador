@@ -26,6 +26,8 @@ set -e; ## break on errors.
 readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)";
 readonly ROOT_DIR="$(dirname "$SCRIPT_DIR")";
 
+echo "$0 ==> Building static...";
+
 ## retrive build and version.
 readonly VERSION="$(git describe --abbrev=0 --tags)";
 readonly CURR_BUILD="$(cat "${ROOT_DIR}/.buildno")";
@@ -54,3 +56,5 @@ cat "${ROOT_DIR}/out/index.html"          \
     ;
 
 echo "${NEXT_BUILD}" > "${ROOT_DIR}/.buildno"; ## update build no.
+
+echo "$0 ==> done...";

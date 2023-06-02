@@ -41,9 +41,10 @@ readonly INCLUDE_DIR="${ROOT_DIR}/game/include";
 
 ##------------------------------------------------------------------------------
 readonly PROJECT_PACKAGE_NAME="el-jamon-volador";
-readonly PROJECT_VERSION="$(git describe --abbrev=0 --tags)"
+readonly PROJECT_VERSION="$(git describe --abbrev=0 --tags)";
 readonly FULL_PACKAGE_NAME="${PROJECT_PACKAGE_NAME}_${PROJECT_VERSION}.gb";
 
+echo "$0 ==> Building game...";
 
 ##----------------------------------------------------------------------------##
 ## Setup Compiler                                                             ##
@@ -78,3 +79,5 @@ $LCC -o                               \
     ${BUILD_DIR}/${FULL_PACKAGE_NAME} \
     ${SOURCE_DIR}/*.c                 \
     ${INCLUDE_DIR}/res/flappy.c
+
+echo "$0 ==> Building done...";
