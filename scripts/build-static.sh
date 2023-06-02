@@ -19,6 +19,7 @@
 ##                                                                            ##
 ##  Description :                                                             ##
 ##    Builds the website for the project.                                     ##
+##    Needs to have ran ./scripts/generate-relese zip first.                  ##
 ##---------------------------------------------------------------------------~##
 
 set -e; ## break on errors.
@@ -34,13 +35,19 @@ readonly CURR_BUILD="$(cat "${ROOT_DIR}/.buildno")";
 readonly NEXT_BUILD="$(( CURR_BUILD + 1 ))";
 readonly DATE="$(date +'%H:%M:%S %d-%m-%Y - %Z')";
 
+readonly ROM_NAME="el-jamon-volador_${VERSION}.gb";
+readonly ZIP_NAME="el-jamon-volador_${VERSION}.zip";
+
 ## clean dir.
 rm -rf   "${ROOT_DIR}/out/";
 mkdir -p "${ROOT_DIR}/out/";
 
 ## copy things.
-cp -R "${ROOT_DIR}/html/"* \
-    "${ROOT_DIR}/out/"
+cp -R "${ROOT_DIR}/html/"*   "${ROOT_DIR}/out/";
+
+mkdir "${ROOT_DIR}/out/data";
+cp "${ROOT_DIR}/build/${ROM_NAME}" "${ROOT_DIR}/out/data";
+cp "${ROOT_DIR}/dist/${ZIP_NAME}"  "${ROOT_DIR}/out/data";
 
 ## remove git repos from out/
 find "$ROOT_DIR/out" -iname "*.git*" -type d | xargs rm -rf;

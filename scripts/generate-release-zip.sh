@@ -33,16 +33,18 @@ readonly PROJECT_VERSION="$(git describe --abbrev=0 --tags)";
 readonly FULL_PROJECT_NAME="${PROJECT_NAME}_${PROJECT_VERSION}";
 
 readonly OUTPUT_DIR="${ROOT_DIR}/dist/${FULL_PROJECT_NAME}";
+readonly ZIP_FULL_PATH="${ROOT_DIR}/dist/${FULL_PROJECT_NAME}.zip";
 echo "$0 ==> Generating release zip...";
 
 ## Create the directory.
 rm -rf   "${OUTPUT_DIR}";
 mkdir -p "${OUTPUT_DIR}";
 
+## Copy resources.
 cp "${ROOT_DIR}/build/${FULL_PROJECT_NAME}.gb" "${OUTPUT_DIR}";
 cp "${ROOT_DIR}/res/readme-release.txt"        "${OUTPUT_DIR}";
 
-mkdir -p "${OUTPUT_DIR}/website"
-cp -R "${ROOT_DIR}/out/"* "${OUTPUT_DIR}/website"
+## Generate zip.
+zip -r "${ZIP_FULL_PATH}" "${OUTPUT_DIR}";
 
 echo "$0 ==> Done...";

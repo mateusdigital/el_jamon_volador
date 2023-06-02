@@ -105,7 +105,7 @@
 
       <div class="button-container">
         <div class="button">
-          <i class="fa-solid fa-circle-down"></i> <a href="./roms/el-jamon-volador__version_.gb">Download the ROM</a>
+          <i class="fa-solid fa-circle-down"></i> <a href="./data/el-jamon-volador__version_.zip">Download the ROM</a>
         </div>
 
         <div class="button">
@@ -183,7 +183,7 @@
         });
     }
 
-    readUint8ArrayFromFile("./roms/el-jamon-volador__version_.gb")
+    readUint8ArrayFromFile("./data/el-jamon-volador__version_.gb")
       .then(uint8Array => {
         gb.InsertRom(uint8Array); // This may throw an error
         gb.Start();

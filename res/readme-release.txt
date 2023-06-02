@@ -24,7 +24,6 @@ Hey, thanks for playing El Jamon Volador, a homage to Flappy Bird developed
                 This is a free game licensed under GPLv3
 
 
-
 --------------------------------------------------------------------------------
 To play you will need an game boy emulador like:
     - BGB:        https://bgb.bircd.org/
@@ -34,13 +33,6 @@ To play you will need an game boy emulador like:
 --------------------------------------------------------------------------------
 Or you can play online at:
     - https://mateus.digital/el_jamon_volador
-
-
---------------------------------------------------------------------------------
-In case that you want to play at your browser locally you can double click
-the index.html at:
-    - webpage/index.html
-
 
 --------------------------------------------------------------------------------
 Visit for other games and info:
