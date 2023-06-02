@@ -45,6 +45,8 @@ cp "${ROOT_DIR}/build/${FULL_PROJECT_NAME}.gb" "${OUTPUT_DIR}";
 cp "${ROOT_DIR}/res/readme-release.txt"        "${OUTPUT_DIR}";
 
 ## Generate zip.
-zip -r "${ZIP_FULL_PATH}" "${OUTPUT_DIR}";
+pushd "${OUTPUT_DIR}"
+    zip -r "${ZIP_FULL_PATH}" .;
+popd
 
 echo "$0 ==> Done...";
