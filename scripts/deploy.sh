@@ -36,9 +36,9 @@ readonly ROOT_DIR="$(dirname "$SCRIPT_DIR")";
 
 readonly SOURCE_FOLDER="${ROOT_DIR}/out";
 readonly REMOTE_SERVER="mateus@mateus.digital";
-readonly REMOTE_FOLDER="/var/www/mateus.digital/el_jamon_volador";
+readonly REMOTE_FOLDER="/var/www/mateus.digital/html/el_jamon_volador";
 
-rsync -avz                                       \
-      --delete "${SOURCE_FOLDER}/"               \
-      -e ssh "${REMOTE_SERVER}:${REMOTE_FOLDER}" \
+rsync -avz                                        \
+      --delete "${SOURCE_FOLDER}/"                \
+      -e ssh "${REMOTE_SERVER}:${REMOTE_FOLDER}/" \
     ;
